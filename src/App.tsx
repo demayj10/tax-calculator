@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import InputForm from "./components/inputForm";
+import { InputFormState, TaxBreakdown } from "./types";
+import { generateTaxReport } from "./lib/taxCalculator";
+import ResultData from "./components/resultData";
+import { initialAppState } from "./reducers/appReducer";
 
-function App() {
+const App = () => {
+  const [resultData, setResultData] = useState(initialAppState);
+
+  const submitInput = (data: InputFormState): void => {
+    const { grossAnnualIncome } = data;
+    const annualIncome: number = parseInt(grossAnnualIncome);
+    const result: TaxBreakdown = generateTaxReport(annualIncome);
+
+    setResultData(result);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <InputForm submitInput={submitInput}/>
+      <br/>
+      {resultData.netAnnualIncome > 0 ?
+          <ResultData data={resultData}/>
+          :
+          null
+      }
     </div>
   );
 }

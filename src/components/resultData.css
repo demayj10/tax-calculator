@@ -1,0 +1,14 @@
+#resultContainer {
+    width: 30%;
+    margin: 0 auto;
+}
+
+#resultContainer > h1 {
+    text-decoration: underline;
+}
+
+#resultData {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+}
