@@ -1,5 +1,3 @@
-import store from "./app/store";
-
 export interface TaxPayload {
     taxRate: number,
     taxAmount: number

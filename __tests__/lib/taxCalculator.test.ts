@@ -20,7 +20,6 @@ describe('test generateTaxReport', () => {
                                           + expectedMedicareTaxAmount;
     const expectedStateIncomeTaxRate = 0;
     const expectedStateIncomeTaxAmount = 0;
-    const expectedTotalStateTaxAmount = expectedStateIncomeTaxAmount;
     const expectedReport: TaxBreakdown = {
       federal: {
         federalIncomeTaxRate: expectedFederalIncomeTaxRate,
@@ -34,7 +33,7 @@ describe('test generateTaxReport', () => {
       state: {
         stateIncomeTaxRate: expectedStateIncomeTaxRate,
         stateIncomeTaxAmount: expectedStateIncomeTaxAmount,
-        totalStateTaxAmount: expectedTotalStateTaxAmount,
+        totalStateTaxAmount: expectedStateIncomeTaxAmount,
         hasStateIncomeTax: false,
       },
       grossAnnualIncome: annualIncome,
