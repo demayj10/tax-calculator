@@ -30,6 +30,7 @@
             "error",
             { "extensions": [".ts", ".tsx"] }
         ],
+        "linebreak-style": ["error", "windows"],
         "import/extensions": [
             "error",
             "ignorePackages",
@@ -44,7 +45,6 @@
         "no-shadow": "off",
         "@typescript-eslint/no-shadow": ["error"],
         "react/no-unused-prop-types": "off",
-        "import/no-cycle": "off",
-        "eslint linebreak-style": ["error", "windows"]
+        "import/no-cycle": "off"
     }
 }
