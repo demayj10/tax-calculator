@@ -1,0 +1,17 @@
+.dataItem {
+    display: flex;
+}
+
+.dataItem > p {
+    justify-content: space-between;
+}
+
+.dataItemTitle {
+    font-weight: bold;
+    width: 70%;
+}
+
+.dataItemValue {
+    text-align: right;
+    width: 30%;
+}

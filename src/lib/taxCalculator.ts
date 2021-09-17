@@ -1,37 +1,28 @@
-import {
-    MEDICARE_TAX_RATE,
-    SOCIAL_SECURITY_TAX_RATE,
-} from "./taxBrackets/constants";
-import {
-    TaxBreakdown
-} from "../types";
-import {
-    calculateFederalIncomeTax, calculateMedicareTax,
-    calculateSocialSecurityTax
-} from "./federalTaxCalculator";
+import { FederalTaxBreakdown, StateTaxBreakdown, TaxBreakdown } from '../types';
+import { calculateFederalTaxes } from './federalTaxCalculator';
+import { calculateStateTaxes } from './stateIncomeTaxCalculator';
 
-export const generateTaxReport = (annualIncome: number): TaxBreakdown =>
-{
-    const {
-        federalIncomeTaxRate, federalIncomeTaxAmount
-    } = calculateFederalIncomeTax(annualIncome);
-    const reducer = (a: number, b: number) => a + b;
-    const socialSecurityTaxAmount = calculateSocialSecurityTax(annualIncome);
-    const medicareTaxAmount = calculateMedicareTax(annualIncome);
-    const totalTaxes: number = [ federalIncomeTaxAmount,
-                                 socialSecurityTaxAmount,
-                                 medicareTaxAmount ].reduce(reducer);
-    const netAnnualIncome: number = annualIncome - totalTaxes;
+export const generateTaxReport = (
+  state: string,
+  annualIncome: number,
+): TaxBreakdown => {
+  const federalTaxes: FederalTaxBreakdown = calculateFederalTaxes(annualIncome);
+  const stateTaxes: StateTaxBreakdown = calculateStateTaxes(state, annualIncome);
 
-    return {
-        grossAnnualIncome: annualIncome,
-        federalIncomeTaxRate,
-        federalIncomeTaxAmount,
-        socialSecurityTaxRate: SOCIAL_SECURITY_TAX_RATE,
-        socialSecurityTaxAmount,
-        medicareTaxRate: MEDICARE_TAX_RATE,
-        medicareTaxAmount,
-        totalTaxes,
-        netAnnualIncome
-    };
-}
+  const { totalFederalTaxAmount } = federalTaxes;
+  const { totalStateTaxAmount } = stateTaxes;
+
+  const totalTaxes: number = (
+    totalFederalTaxAmount
+        + totalStateTaxAmount
+  );
+  const netAnnualIncome: number = annualIncome - totalTaxes;
+
+  return {
+    federal: federalTaxes,
+    state: stateTaxes,
+    grossAnnualIncome: annualIncome,
+    totalTaxes,
+    netAnnualIncome,
+  };
+};
