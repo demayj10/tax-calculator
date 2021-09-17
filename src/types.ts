@@ -1,21 +1,29 @@
-export interface FederalIncomeBreakdown {
-    federalIncomeTaxRate: number,
-    federalIncomeTaxAmount: number
+export interface TaxPayload {
+    taxRate: number,
+    taxAmount: number
 }
 
-export interface StateIncomeBreakdown {
-    stateIncomeTaxRate: number,
-    stateIncomeTaxAmount: number
-}
-
-export interface TaxBreakdown {
-    grossAnnualIncome: number,
+export interface FederalTaxBreakdown {
     federalIncomeTaxRate: number,
     federalIncomeTaxAmount: number,
     socialSecurityTaxRate: number,
     socialSecurityTaxAmount: number,
     medicareTaxRate: number,
     medicareTaxAmount: number,
+    totalFederalTaxAmount: number
+}
+
+export interface StateTaxBreakdown {
+    stateIncomeTaxRate: number,
+    stateIncomeTaxAmount: number,
+    totalStateTaxAmount: number,
+    hasStateIncomeTax: boolean
+}
+
+export interface TaxBreakdown {
+    federal: FederalTaxBreakdown,
+    state: StateTaxBreakdown,
+    grossAnnualIncome: number,
     totalTaxes: number,
     netAnnualIncome: number
 }
@@ -26,15 +34,9 @@ export type TaxBracket = {
     taxTotalToThisBracket: number
 }
 
-export type ActionString = {
-    type: string,
+export type FieldUpdatePayload = {
     field: string,
-    payload: string
-}
-
-export type ActionObject = {
-    type: string,
-    payload: object
+    value: string | number
 }
 
 export type InputFormState = {
@@ -42,6 +44,3 @@ export type InputFormState = {
     selectedState: string,
     maritalStatus: string
 }
-
-export interface AppState extends TaxBreakdown {}
-
