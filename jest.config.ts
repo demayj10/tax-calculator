@@ -1,6 +1,6 @@
 export default {
-    preset: "ts-jest",
-    transform: {
-        '^.+\\.(ts|tsx)?$': 'ts-jest',
-    }
+  preset: 'ts-jest',
+  transform: {
+    '^.+\\.(ts|tsx)?$': 'ts-jest',
+  },
 };
