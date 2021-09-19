@@ -1,4 +1,5 @@
 export const enum DataItemType {
     Percentage = 'PERCENTAGE',
-    DollarAmount = 'DOLLAR AMOUNT'
+    DollarAmount = 'DOLLAR AMOUNT',
+    DefaultForTesting = 'Default'
 }

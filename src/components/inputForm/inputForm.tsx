@@ -6,8 +6,10 @@ import { MaritalStatusList } from '../../lib/data/maritalStatus';
 import { useAppSelector } from '../../app/hooks';
 import { handleTextChange, resetInput, selectInputForm } from './inputFormSlice';
 import { AppDispatch } from '../../app/store';
+import SelectMenu from '../selectMenu';
+import TextField from '../textField';
 
-interface InputFormProps {
+export interface InputFormProps {
     submitInput(data: InputFormState): void;
 }
 
@@ -39,51 +41,31 @@ const InputForm: FC<InputFormProps> = (inputFormProps: InputFormProps) => {
 
   return (
     <div id="formContainer">
-      <label htmlFor={grossAnnualIncomeId}>
-        Gross Annual Income
-        <input
-          name={grossAnnualIncomeId}
-          id={grossAnnualIncomeId}
-          value={grossAnnualIncome}
-          onChange={(e: BaseSyntheticEvent) => handleInputChange(e)}
-        />
-      </label>
+      <TextField
+        label="Gross Annual Income"
+        id={grossAnnualIncomeId}
+        handleInputChange={handleInputChange}
+        testId="grossAnnualIncomeInput"
+        value={grossAnnualIncome}
+      />
       <br />
-      <label htmlFor={selectedStateId}>
-        Which State do you live in?
-        <select
-          name={selectedStateId}
-          id={selectedStateId}
-          value={selectedState}
-          onChange={(e: BaseSyntheticEvent) => handleInputChange(e)}
-        >
-          <option value="" label="Select" disabled />
-          {SupportedStatesList.map((state: string) => (
-            <option value={state} key={state}>
-              {state}
-            </option>
-          ))}
-          ;
-        </select>
-      </label>
+      <SelectMenu
+        label="Which State do you live in?"
+        id={selectedStateId}
+        optionList={SupportedStatesList}
+        handleInputChange={handleInputChange}
+        testId="stateSelect"
+        value={selectedState}
+      />
       <br />
-      <label htmlFor={maritalStatusId}>
-        What is your filing status?
-        <select
-          name={maritalStatusId}
-          id={maritalStatusId}
-          value={maritalStatus}
-          onChange={(e: BaseSyntheticEvent) => handleInputChange(e)}
-        >
-          <option value="" label="Select" disabled />
-          {MaritalStatusList.map((status: string) => (
-            <option value={status} key={status}>
-              {status}
-            </option>
-          ))}
-          ;
-        </select>
-      </label>
+      <SelectMenu
+        label="What is your filing status?"
+        id={maritalStatusId}
+        optionList={MaritalStatusList}
+        handleInputChange={handleInputChange}
+        testId="maritalStatusSelect"
+        value={maritalStatus}
+      />
       <br />
       <button
         id="submit"

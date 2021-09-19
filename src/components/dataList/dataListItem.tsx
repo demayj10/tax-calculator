@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import './dataListItem.css';
 import { DataItemType } from '../../lib/data/dataItemType';
 
-interface DataListItemProps {
+export interface DataListItemProps {
     title: string,
     value: number,
     type: DataItemType
@@ -33,11 +33,10 @@ const DataListItem: FC<DataListItemProps> = (dataListItemProps: DataListItemProp
 
   return (
     <li className="dataItem">
-      <p className="dataItemTitle">
-        {title}
-        :
+      <p className="dataItemTitle" data-testid="dataItemTitle">
+        {`${title}:`}
       </p>
-      <p className="dataItemValue">{valueString}</p>
+      <p className="dataItemValue" data-testid="dataItemValue">{valueString}</p>
     </li>
   );
 };

@@ -29,6 +29,6 @@ export const inputFormSlice: Slice = createSlice({
 
 export const { handleTextChange, resetInput } = inputFormSlice.actions;
 
-export const selectInputForm = (state: RootState): InputFormState => state.inputForm;
+export const selectInputForm = (state: RootState): InputFormState => state.inputFormReducer;
 
 export default inputFormSlice.reducer;

@@ -40,6 +40,6 @@ export const resultDataSlice: Slice = createSlice({
 });
 
 export const { updateResultData, toggleContent } = resultDataSlice.actions;
-export const selectResultData = (state: RootState): ResultDataState => state.resultData;
+export const selectResultData = (state: RootState): ResultDataState => state.resultDataReducer;
 
 export default resultDataSlice.reducer;
