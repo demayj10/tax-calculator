@@ -26,7 +26,7 @@ const ResultData: FC = () => {
   } = resultData;
 
   return (
-    <div id="resultContainer">
+    <div id="resultContainer" data-testid="result-data">
       <h1>
         <u>Results</u>
       </h1>

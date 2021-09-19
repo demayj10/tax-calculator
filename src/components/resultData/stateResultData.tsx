@@ -4,7 +4,7 @@ import DataListItem from '../dataList/dataListItem';
 import './stateResultData.css';
 import { DataItemType } from '../../lib/data/dataItemType';
 
-interface StateResultDataProps {
+export interface StateResultDataProps {
     stateIncomeTaxRate: number,
     stateIncomeTaxAmount: number,
     totalStateTaxAmount: number
@@ -18,7 +18,7 @@ const StateResultData: FC<StateResultDataProps> = (props: StateResultDataProps) 
   } = props;
 
   return (
-    <div id="stateResultDataContainer">
+    <div id="stateResultDataContainer" data-testid="state-result-data">
       <DataListItem
         title="State Income Tax Rate"
         value={stateIncomeTaxRate}

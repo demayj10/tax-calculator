@@ -40,7 +40,7 @@ const InputForm: FC<InputFormProps> = (inputFormProps: InputFormProps) => {
   };
 
   return (
-    <div id="formContainer">
+    <div id="formContainer" data-testid="input-form">
       <TextField
         label="Gross Annual Income"
         id={grossAnnualIncomeId}

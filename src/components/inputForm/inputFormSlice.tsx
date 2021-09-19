@@ -18,8 +18,10 @@ export const inputFormSlice: Slice = createSlice({
   name: 'inputForm',
   initialState,
   reducers: {
-    handleTextChange: (state: InputFormState,
-      action: PayloadAction<FieldUpdatePayload>) => {
+    handleTextChange: (
+      state: InputFormState,
+      action: PayloadAction<FieldUpdatePayload>,
+    ) => {
       const { field, value } = action.payload;
       return { ...state, [field]: value };
     },
