@@ -10,12 +10,33 @@ import {
 } from './taxBrackets/constants';
 import {
   federalFirstBracket,
-  FederalIncomeTax,
-} from './taxBrackets/Federal-IncomeTax';
+  federalIncomeSingleTaxBracketsArray,
+} from './taxBrackets/Federal-IncomeTax-Single';
+import { MaritalStatus } from './data/maritalStatus';
+import {
+  federalIncomeTaxMarriedJointlyArray,
+  federalIncomeTaxMarriedSeparateArray,
+} from './taxBrackets/Federal-IncomeTax-Married';
 
-export const findFederalIncomeTaxBracket = (annualIncome: number): TaxBracket => {
+export const findFederalIncomeTaxBracketList = (maritalStatus: string): TaxBracket[] => {
+  switch (maritalStatus) {
+    case MaritalStatus.Single:
+      return federalIncomeSingleTaxBracketsArray;
+    case MaritalStatus.MarriedJointly:
+      return federalIncomeTaxMarriedJointlyArray;
+    case MaritalStatus.MarriedSeparately:
+      return federalIncomeTaxMarriedSeparateArray;
+    default:
+      return [];
+  }
+};
+
+export const findFederalIncomeTaxBracket = (
+  annualIncome: number,
+  federalIncomeTaxBracketList: TaxBracket[],
+): TaxBracket => {
   let maxMinimum: TaxBracket = federalFirstBracket;
-  FederalIncomeTax.forEach((bracket) => {
+  federalIncomeTaxBracketList.forEach((bracket) => {
     if (annualIncome > bracket.minimumToQualify
             && bracket.minimumToQualify > maxMinimum.minimumToQualify) {
       maxMinimum = bracket;
@@ -25,12 +46,16 @@ export const findFederalIncomeTaxBracket = (annualIncome: number): TaxBracket =>
   return maxMinimum;
 };
 
-export const calculateFederalIncomeTax = (annualIncome: number): TaxPayload => {
+export const calculateFederalIncomeTax = (
+  annualIncome: number,
+  maritalStatus: string,
+): TaxPayload => {
+  const federalIncomeTaxBracketList: TaxBracket[] = findFederalIncomeTaxBracketList(maritalStatus);
   const {
     minimumToQualify,
     taxRate,
     taxTotalToThisBracket,
-  }: TaxBracket = findFederalIncomeTaxBracket(annualIncome);
+  }: TaxBracket = findFederalIncomeTaxBracket(annualIncome, federalIncomeTaxBracketList);
 
   const amountTaxed: number = annualIncome - minimumToQualify;
   const taxAmount: number = (amountTaxed * taxRate) + taxTotalToThisBracket;
@@ -51,11 +76,12 @@ export const calculateMedicareTax = (
 
 export const calculateFederalTaxes = (
   annualIncome: number,
+  maritalStatus: string,
 ): FederalTaxBreakdown => {
   const {
     taxRate: federalIncomeTaxRate,
     taxAmount: federalIncomeTaxAmount,
-  } = calculateFederalIncomeTax(annualIncome);
+  } = calculateFederalIncomeTax(annualIncome, maritalStatus);
   const socialSecurityTaxAmount: number = calculateSocialSecurityTax(annualIncome);
   const medicareTaxAmount: number = calculateMedicareTax(annualIncome);
 
