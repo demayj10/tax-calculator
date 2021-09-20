@@ -36,7 +36,7 @@ const seventhBracket: TaxBracket = {
   taxTotalToThisBracket: 156235,
 };
 
-export const FederalIncomeTax: TaxBracket[] = [
+export const federalIncomeSingleTaxBracketsArray: TaxBracket[] = [
   federalFirstBracket,
   secondBracket,
   thirdBracket,
@@ -46,7 +46,7 @@ export const FederalIncomeTax: TaxBracket[] = [
   seventhBracket,
 ];
 
-export const federalIncomeTaxBrackets = {
+export const federalIncomeSingleTaxBracketsObject = {
   firstBracket: federalFirstBracket,
   secondBracket,
   thirdBracket,

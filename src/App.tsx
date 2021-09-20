@@ -22,9 +22,9 @@ const App: FC = () => {
   const { showContent: showResultContent } = resultData;
 
   const submitInput = (data: InputFormState): void => {
-    const { grossAnnualIncome, selectedState } = data;
+    const { grossAnnualIncome, selectedState, maritalStatus } = data;
     const annualIncome: number = parseInt(grossAnnualIncome, 10);
-    const result: TaxBreakdown = generateTaxReport(selectedState, annualIncome);
+    const result: TaxBreakdown = generateTaxReport(selectedState, annualIncome, maritalStatus);
 
     dispatch(updateResultData(result));
     dispatch(toggleContent(true));
