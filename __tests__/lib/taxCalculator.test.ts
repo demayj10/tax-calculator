@@ -6,10 +6,12 @@ import {
   SOCIAL_SECURITY_TAX_RATE,
 } from '../../src/lib/taxBrackets/constants';
 import { SupportedStates } from '../../src/lib/data/supportedStates';
+import {MaritalStatus} from "../../src/lib/data/maritalStatus";
 
 describe('test generateTaxReport', () => {
   test('should generate the report for income - $0 in a state with no income tax', () => {
     const state = SupportedStates.Washington;
+    const maritalStatus = MaritalStatus.Single;
     const annualIncome = 0;
     const expectedFederalIncomeTaxRate = 0.10;
     const expectedFederalIncomeTaxAmount = 0;
@@ -40,13 +42,14 @@ describe('test generateTaxReport', () => {
       totalTaxes: 0,
       netAnnualIncome: 0,
     };
-    const actualReport: TaxBreakdown = generateTaxReport(state, annualIncome);
+    const actualReport: TaxBreakdown = generateTaxReport(state, annualIncome, maritalStatus);
 
     expect(actualReport).toEqual(expectedReport);
   });
 
   test('should generate the report for income - $100,000 in a state with no income tax', () => {
     const state = SupportedStates.Washington;
+    const maritalStatus = MaritalStatus.Single;
     const annualIncome: number = ONE_HUNDRED_THOUSAND;
     const expectedFederalIncomeTaxRate = 0.24;
     const expectedFederalIncomeTaxAmount = 18079.26;
@@ -81,13 +84,14 @@ describe('test generateTaxReport', () => {
       totalTaxes: expectedTotalTaxes,
       netAnnualIncome: expectedNetAnnualIncome,
     };
-    const actualReport: TaxBreakdown = generateTaxReport(state, annualIncome);
+    const actualReport: TaxBreakdown = generateTaxReport(state, annualIncome, maritalStatus);
 
     expect(actualReport).toEqual(expectedReport);
   });
 
   test('should generate the report for income - $100,000 in a state with income tax', () => {
     const state = SupportedStates.Ohio;
+    const maritalStatus = MaritalStatus.Single;
     const annualIncome: number = ONE_HUNDRED_THOUSAND;
     const expectedFederalIncomeTaxRate = 0.24;
     const expectedFederalIncomeTaxAmount = 18079.26;
@@ -122,7 +126,7 @@ describe('test generateTaxReport', () => {
       totalTaxes: expectedTotalTaxes,
       netAnnualIncome: expectedNetAnnualIncome,
     };
-    const actualReport: TaxBreakdown = generateTaxReport(state, annualIncome);
+    const actualReport: TaxBreakdown = generateTaxReport(state, annualIncome, maritalStatus);
 
     expect(actualReport).toEqual(expectedReport);
   });
