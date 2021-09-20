@@ -16,7 +16,7 @@ import InputForm from './components/inputForm/inputForm';
 import ResultData from './components/resultData/resultData';
 
 const App: FC = () => {
-  const resultData = useAppSelector((state) => state.resultData);
+  const resultData = useAppSelector((state) => state.resultDataReducer);
   const dispatch: AppDispatch = useDispatch();
 
   const { showContent: showResultContent } = resultData;

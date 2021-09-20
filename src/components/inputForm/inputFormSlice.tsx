@@ -18,8 +18,10 @@ export const inputFormSlice: Slice = createSlice({
   name: 'inputForm',
   initialState,
   reducers: {
-    handleTextChange: (state: InputFormState,
-      action: PayloadAction<FieldUpdatePayload>) => {
+    handleTextChange: (
+      state: InputFormState,
+      action: PayloadAction<FieldUpdatePayload>,
+    ) => {
       const { field, value } = action.payload;
       return { ...state, [field]: value };
     },
@@ -29,6 +31,6 @@ export const inputFormSlice: Slice = createSlice({
 
 export const { handleTextChange, resetInput } = inputFormSlice.actions;
 
-export const selectInputForm = (state: RootState): InputFormState => state.inputForm;
+export const selectInputForm = (state: RootState): InputFormState => state.inputFormReducer;
 
 export default inputFormSlice.reducer;
