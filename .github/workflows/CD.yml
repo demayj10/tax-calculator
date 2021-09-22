@@ -25,6 +25,12 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
       - name: Install rsync
         run: |
           apt-get update && apt-get install -y rsync
