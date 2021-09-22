@@ -9,5 +9,4 @@ export const MaritalStatusList = [
   MaritalStatus.Single,
   MaritalStatus.MarriedJointly,
   MaritalStatus.MarriedSeparately,
-  MaritalStatus.DefaultForTesting,
 ];
