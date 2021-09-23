@@ -1,6 +1,6 @@
 import React from 'react';
 import App from '../src/App';
-import { fireEvent, render, screen } from '../src/test-utils';
+import { fireEvent, render, screen } from '../src/app/test-utils';
 import { SupportedStates } from '../src/lib/data/supportedStates';
 import { MaritalStatus } from '../src/lib/data/maritalStatus';
 

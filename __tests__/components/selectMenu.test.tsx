@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
-import { render, screen } from '../../src/test-utils';
+import { render, screen } from '../../src/app/test-utils';
 import SelectMenu, { SelectMenuProps } from '../../src/components/selectMenu';
 
 describe('load select menu', () => {

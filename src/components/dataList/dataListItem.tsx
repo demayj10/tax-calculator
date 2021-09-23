@@ -1,15 +1,19 @@
 import React, { FC } from 'react';
 import './dataListItem.css';
+import { Paper, Typography } from '@mui/material';
 import { DataItemType } from '../../lib/data/dataItemType';
 
 export interface DataListItemProps {
     title: string,
     value: number,
-    type: DataItemType
+    type: DataItemType,
+    isSublist: boolean
 }
 
 const DataListItem: FC<DataListItemProps> = (dataListItemProps: DataListItemProps) => {
-  const { title, value, type } = dataListItemProps;
+  const {
+    title, value, type, isSublist,
+  } = dataListItemProps;
   let valueString: string;
 
   const formatterUSD = new Intl.NumberFormat('en-US', {
@@ -17,7 +21,7 @@ const DataListItem: FC<DataListItemProps> = (dataListItemProps: DataListItemProp
     currency: 'USD',
   });
 
-  const convertToPercent = (rate: number): string => `${(rate * 100).toFixed(3)}%`;
+  const convertToPercent = (rate: number): string => `${parseFloat((rate * 100).toFixed(3))}%`;
 
   switch (type) {
     case DataItemType.DollarAmount:
@@ -31,13 +35,30 @@ const DataListItem: FC<DataListItemProps> = (dataListItemProps: DataListItemProp
       break;
   }
 
+  if (isSublist) {
+    return (
+      <li className="dataItem">
+        <p className="dataItemTitle" data-testid="dataItemTitle">
+          {`${title}:`}
+        </p>
+        <p className="dataItemValue subListValue" data-testid="dataItemValue">{valueString}</p>
+      </li>
+    );
+  }
   return (
-    <li className="dataItem">
-      <p className="dataItemTitle" data-testid="dataItemTitle">
-        {`${title}:`}
-      </p>
-      <p className="dataItemValue" data-testid="dataItemValue">{valueString}</p>
-    </li>
+    <Paper>
+      <div className="paper-item">
+        <Typography fontWeight="bold" variant="h5">{`${title}:`}</Typography>
+        <Typography
+          fontWeight="bold"
+          className="dataItemValue"
+          variant="h5"
+          data-testid="dataItemValue"
+        >
+          {valueString}
+        </Typography>
+      </div>
+    </Paper>
   );
 };
 

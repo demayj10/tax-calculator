@@ -11,7 +11,6 @@ export default {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   coveragePathIgnorePatterns: [
-    '<rootDir>/src/test-utils.tsx',
     '<rootDir>/src/app/',
   ],
 };
