@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '../../../src/test-utils';
+import { render, screen } from '../../../src/app/test-utils';
 import InputForm, { InputFormProps } from '../../../src/components/inputForm/inputForm';
 
 describe('load input form', () => {

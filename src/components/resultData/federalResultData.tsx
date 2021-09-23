@@ -1,8 +1,12 @@
 import React, { FC } from 'react';
+
 import DataListItem from '../dataList/dataListItem';
 import { DataItemType } from '../../lib/data/dataItemType';
 
 import './federalResultData.css';
+import FinancialAccordionSummary from '../accordion/financialAccordionSummary';
+import { CustomizedAccordion } from '../accordion/customizedAccordion';
+import { CustomizedAccordionDetails } from '../accordion/customizedAccordionDetails';
 
 interface FederalResultDataProps {
     federalTaxData: {
@@ -30,43 +34,57 @@ const FederalResultData: FC<FederalResultDataProps> = (props: FederalResultDataP
   } = props;
 
   return (
-    <div id="federalResultDataContainer">
-      <DataListItem
-        title="Federal Income Tax Rate"
-        value={federalIncomeTaxRate}
-        type={DataItemType.Percentage}
+    <CustomizedAccordion id="federalResultDataContainer">
+      <FinancialAccordionSummary
+        title="Federal Taxes"
+        amount={totalFederalTaxAmount}
+        ariaControls="federalTaxPanel"
       />
-      <DataListItem
-        title="Federal Income Tax Amount"
-        value={federalIncomeTaxAmount}
-        type={DataItemType.DollarAmount}
-      />
-      <DataListItem
-        title="Medicare Security Tax Rate"
-        value={medicareTaxRate}
-        type={DataItemType.Percentage}
-      />
-      <DataListItem
-        title="Medicare Security Tax Amount"
-        value={medicareTaxAmount}
-        type={DataItemType.DollarAmount}
-      />
-      <DataListItem
-        title="Social Security Tax Rate"
-        value={socialSecurityTaxRate}
-        type={DataItemType.Percentage}
-      />
-      <DataListItem
-        title="Social Security Tax Amount"
-        value={socialSecurityTaxAmount}
-        type={DataItemType.DollarAmount}
-      />
-      <DataListItem
-        title="Total Federal Tax Amount"
-        value={totalFederalTaxAmount}
-        type={DataItemType.DollarAmount}
-      />
-    </div>
+      <CustomizedAccordionDetails>
+        <DataListItem
+          title="Federal Income Tax Rate"
+          value={federalIncomeTaxRate}
+          type={DataItemType.Percentage}
+          isSublist
+        />
+        <DataListItem
+          title="Federal Income Tax Amount"
+          value={federalIncomeTaxAmount}
+          type={DataItemType.DollarAmount}
+          isSublist
+        />
+        <DataListItem
+          title="Medicare Security Tax Rate"
+          value={medicareTaxRate}
+          type={DataItemType.Percentage}
+          isSublist
+        />
+        <DataListItem
+          title="Medicare Security Tax Amount"
+          value={medicareTaxAmount}
+          type={DataItemType.DollarAmount}
+          isSublist
+        />
+        <DataListItem
+          title="Social Security Tax Rate"
+          value={socialSecurityTaxRate}
+          type={DataItemType.Percentage}
+          isSublist
+        />
+        <DataListItem
+          title="Social Security Tax Amount"
+          value={socialSecurityTaxAmount}
+          type={DataItemType.DollarAmount}
+          isSublist
+        />
+        <DataListItem
+          title="Total Federal Tax Amount"
+          value={totalFederalTaxAmount}
+          type={DataItemType.DollarAmount}
+          isSublist
+        />
+      </CustomizedAccordionDetails>
+    </CustomizedAccordion>
   );
 };
 

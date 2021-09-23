@@ -1,17 +1,36 @@
 .dataItem {
     display: flex;
+    margin-right: 0;
 }
 
 .dataItem > p {
     justify-content: space-between;
+    margin-right: 0;
 }
 
 .dataItemTitle {
     font-weight: bold;
     width: 70%;
+    padding-left: 16px;
 }
 
 .dataItemValue {
     text-align: right;
     width: 30%;
+    padding-right: 16px;
+}
+
+.subListValue {
+    padding-right: 0;
+}
+
+.paper-item {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 16px;
+    margin: 0.5em 0;
+}
+
+.titleValue {
+    font-weight: bold;
 }

@@ -30,33 +30,33 @@ const ResultData: FC = () => {
       <h1>
         <u>Results</u>
       </h1>
-      <ul id="resultData">
+      <div id="resultData">
         <DataListItem
           title="Gross Annual Income"
           value={grossAnnualIncome}
           type={DataItemType.DollarAmount}
+          isSublist={false}
         />
         <FederalResultData federalTaxData={federal} />
-        { hasStateIncomeTax
-          ? (
-            <StateResultData
-              stateIncomeTaxRate={stateIncomeTaxRate}
-              stateIncomeTaxAmount={stateIncomeTaxAmount}
-              totalStateTaxAmount={totalStateTaxAmount}
-            />
-          )
-          : null}
+        <StateResultData
+          stateIncomeTaxRate={stateIncomeTaxRate}
+          stateIncomeTaxAmount={stateIncomeTaxAmount}
+          totalStateTaxAmount={totalStateTaxAmount}
+          hasStateIncomeTax={hasStateIncomeTax}
+        />
         <DataListItem
           title="Total Taxes"
           value={totalTaxes}
           type={DataItemType.DollarAmount}
+          isSublist={false}
         />
         <DataListItem
           title="Net Annual Income"
           value={netAnnualIncome}
           type={DataItemType.DollarAmount}
+          isSublist={false}
         />
-      </ul>
+      </div>
     </div>
   );
 };

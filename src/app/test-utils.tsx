@@ -8,7 +8,7 @@ import {
 } from '@testing-library/react';
 import { createStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import { rootReducer, RootState, Store } from './app/store';
+import { rootReducer, RootState, Store } from './store';
 
 // add options initialState and store to the usual
 type ExtraOptions = {

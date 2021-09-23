@@ -1,5 +1,6 @@
 import React, { BaseSyntheticEvent, FC } from 'react';
 import { useDispatch } from 'react-redux';
+import Button from '@mui/material/Button';
 import { FieldUpdatePayload, InputFormState } from '../../types';
 import { SupportedStatesList } from '../../lib/data/supportedStates';
 import { MaritalStatusList } from '../../lib/data/maritalStatus';
@@ -67,14 +68,15 @@ const InputForm: FC<InputFormProps> = (inputFormProps: InputFormProps) => {
         value={maritalStatus}
       />
       <br />
-      <button
+      <Button
+        variant="contained"
         id="submit"
-        type="submit"
+        size="small"
         disabled={!isEnabled}
         onClick={(e: BaseSyntheticEvent) => submitForm(e)}
       >
         Submit
-      </button>
+      </Button>
     </div>
   );
 };

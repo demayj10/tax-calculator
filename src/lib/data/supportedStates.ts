@@ -1,6 +1,6 @@
 export const enum SupportedStates {
-    Ohio = 'OH',
-    Washington = 'WA'
+    Ohio = 'Ohio',
+    Washington = 'Washington'
 }
 
 export const StatesWithoutIncomeTax = [
