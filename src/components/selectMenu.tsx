@@ -1,4 +1,5 @@
 import React, { BaseSyntheticEvent, FC } from 'react';
+import { Typography } from '@mui/material';
 
 export interface SelectMenuProps {
     label: string,
@@ -15,9 +16,11 @@ const SelectMenu: FC<SelectMenuProps> = (props: SelectMenuProps) => {
   } = props;
 
   return (
-    <>
-      <label htmlFor={id}>
+    <div className="input-row">
+      <Typography variant="h6">
         {label}
+      </Typography>
+      <div className="input-value-item">
         <select
           name={id}
           data-testid={testId}
@@ -32,8 +35,9 @@ const SelectMenu: FC<SelectMenuProps> = (props: SelectMenuProps) => {
             </option>
           ))}
         </select>
-      </label>
-    </>
+      </div>
+
+    </div>
   );
 };
 

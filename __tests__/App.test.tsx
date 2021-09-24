@@ -9,7 +9,7 @@ const checkAndUpdateStateValue = (
   selectedStateUserValue: string,
   maritalStatusUserValue: string,
 ): void => {
-  const grossAnnualIncome: HTMLElement = screen.getByLabelText('Gross Annual Income');
+  const grossAnnualIncome: HTMLElement = screen.getByTestId('grossAnnualIncomeInput');
   expect(grossAnnualIncome).toBeInTheDocument();
   expect(grossAnnualIncome).toHaveValue('');
   fireEvent.change(grossAnnualIncome, { target: { value: grossAnnualIncomeUserValue } });
