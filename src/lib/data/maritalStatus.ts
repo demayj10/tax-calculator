@@ -1,7 +1,7 @@
 export const enum MaritalStatus {
     Single = 'Single',
     MarriedJointly = 'Married filing jointly',
-    MarriedSeparately = 'Married separately separately',
+    MarriedSeparately = 'Married filing separately',
     DefaultForTesting = 'Default for testing',
 }
 
