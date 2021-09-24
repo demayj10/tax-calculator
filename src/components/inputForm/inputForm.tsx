@@ -10,6 +10,8 @@ import { AppDispatch } from '../../app/store';
 import SelectMenu from '../selectMenu';
 import TextField from '../textField';
 
+import './inputForm.css';
+
 export interface InputFormProps {
     submitInput(data: InputFormState): void;
 }
@@ -42,31 +44,31 @@ const InputForm: FC<InputFormProps> = (inputFormProps: InputFormProps) => {
 
   return (
     <div id="formContainer" data-testid="input-form">
-      <TextField
-        label="Gross Annual Income"
-        id={grossAnnualIncomeId}
-        handleInputChange={handleInputChange}
-        testId="grossAnnualIncomeInput"
-        value={grossAnnualIncome}
-      />
-      <br />
-      <SelectMenu
-        label="Which State do you live in?"
-        id={selectedStateId}
-        optionList={SupportedStatesList}
-        handleInputChange={handleInputChange}
-        testId="stateSelect"
-        value={selectedState}
-      />
-      <br />
-      <SelectMenu
-        label="What is your filing status?"
-        id={maritalStatusId}
-        optionList={MaritalStatusList}
-        handleInputChange={handleInputChange}
-        testId="maritalStatusSelect"
-        value={maritalStatus}
-      />
+      <div id="input-items">
+        <TextField
+          label="Gross Annual Income"
+          id={grossAnnualIncomeId}
+          handleInputChange={handleInputChange}
+          testId="grossAnnualIncomeInput"
+          value={grossAnnualIncome}
+        />
+        <SelectMenu
+          label="Which State do you live in?"
+          id={selectedStateId}
+          optionList={SupportedStatesList}
+          handleInputChange={handleInputChange}
+          testId="stateSelect"
+          value={selectedState}
+        />
+        <SelectMenu
+          label="What is your filing status?"
+          id={maritalStatusId}
+          optionList={MaritalStatusList}
+          handleInputChange={handleInputChange}
+          testId="maritalStatusSelect"
+          value={maritalStatus}
+        />
+      </div>
       <br />
       <Button
         variant="contained"

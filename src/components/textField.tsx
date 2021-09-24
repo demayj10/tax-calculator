@@ -1,4 +1,5 @@
 import React, { BaseSyntheticEvent, FC } from 'react';
+import { Typography } from '@mui/material';
 
 export interface TextFieldProps {
     label: string,
@@ -14,9 +15,11 @@ const TextField: FC<TextFieldProps> = (props: TextFieldProps) => {
   } = props;
 
   return (
-    <>
-      <label htmlFor={id}>
+    <div className="input-row">
+      <Typography variant="h6">
         {label}
+      </Typography>
+      <div className="input-value-item">
         <input
           name={id}
           id={id}
@@ -24,8 +27,8 @@ const TextField: FC<TextFieldProps> = (props: TextFieldProps) => {
           value={value}
           onChange={(e: BaseSyntheticEvent) => handleInputChange(e)}
         />
-      </label>
-    </>
+      </div>
+    </div>
   );
 };
 

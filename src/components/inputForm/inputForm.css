@@ -1,0 +1,27 @@
+#formContainer {
+    margin: 5em auto;
+    padding: 1em 3em;
+    width: 50%;
+}
+
+.input-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-value-item {
+    width: 48%;
+    margin: 0;
+}
+
+.input-value-item > * {
+    font-size: 1rem;
+    width: 90%;
+}
+
+.input-value-item > input {
+    margin: 0;
+    padding: 0;
+}
