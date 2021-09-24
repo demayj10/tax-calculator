@@ -25,3 +25,32 @@
     margin: 0;
     padding: 0;
 }
+
+@media screen and (max-width: 1100px) {
+    #formContainer {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    #formContainer {
+        width: 90%;
+        margin: 5em 1em;
+        padding: 1em 0;
+    }
+}
+
+/* Mobile UI */
+@media screen and (max-width: 575px) {
+    #formContainer {
+        width: 95%;
+        margin: 2em auto 1em;
+        padding: 1em 0;
+    }
+    .input-row {
+        flex-direction: column;
+    }
+    .input-value-item {
+        width: 60%;
+    }
+}

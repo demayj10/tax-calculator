@@ -1,0 +1,6 @@
+/* Mobile UI */
+@media screen and (max-width: 575px) {
+    .accordion-summary h5 {
+        font-size: 1em !important;
+    }
+}

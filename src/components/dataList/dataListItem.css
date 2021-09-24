@@ -34,3 +34,14 @@
 .titleValue {
     font-weight: bold;
 }
+
+/* Mobile UI */
+@media screen and (max-width: 575px) {
+    .paper-item > * {
+        font-size: 1em !important;
+    }
+
+    .dataItem {
+        font-size: 0.8em;
+    }
+}

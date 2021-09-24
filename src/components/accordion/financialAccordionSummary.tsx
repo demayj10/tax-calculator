@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import { styled } from '@mui/material/styles';
 import { AccordionSummary, Typography } from '@mui/material';
 
+import './financialAccordionSummary.css';
+
 interface FinancialAccordionSummaryProps {
     title: string,
     amount: number;
@@ -18,7 +20,7 @@ const FinancialAccordionSummary: FC<FinancialAccordionSummaryProps> = (
         width: 100%;
         display: flex;
         justify-content: space-between;
-    }    
+    }
   `;
 
   const formatterUSD = new Intl.NumberFormat('en-US', {
@@ -29,6 +31,7 @@ const FinancialAccordionSummary: FC<FinancialAccordionSummaryProps> = (
   return (
     <CustomizedAccordionSummary
       aria-controls={ariaControls}
+      className="accordion-summary"
     >
       <Typography fontWeight="bold" align="left" variant="h5">
         {title}
