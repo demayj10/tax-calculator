@@ -22,7 +22,9 @@ const TextField: FC<TextFieldProps> = (props: TextFieldProps) => {
       <div className="input-value-item">
         <input
           name={id}
+          aria-label={id}
           id={id}
+          placeholder="0"
           data-testid={testId}
           value={value}
           onChange={(e: BaseSyntheticEvent) => handleInputChange(e)}
