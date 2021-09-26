@@ -7,6 +7,15 @@
     text-decoration: underline;
 }
 
+.tab button span {
+    padding: 0 16px;
+    margin: 0;
+}
+
+.tab span {
+    margin: 0;
+}
+
 #resultData {
     list-style: none;
     text-align: left;
@@ -17,8 +26,12 @@
 }
 
 #resultData > * {
-    width: 80%;
+    width: 100%;
     margin: 0.5em 0;
+}
+
+.panel-content > div {
+    margin: 0;
 }
 
 @media screen and (max-width: 1250px) {

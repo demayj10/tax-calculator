@@ -39,3 +39,11 @@ export type FieldUpdatePayload = {
     value: string | number,
     type?: string,
 }
+
+export interface ResultPanelContentProps {
+    federal: FederalTaxBreakdown,
+    state: StateTaxBreakdown,
+    grossAnnualIncome: number,
+    totalTaxes: number,
+    netAnnualIncome: number,
+}

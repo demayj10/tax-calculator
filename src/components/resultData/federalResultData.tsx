@@ -54,13 +54,13 @@ const FederalResultData: FC<FederalResultDataProps> = (props: FederalResultDataP
           isSublist
         />
         <DataListItem
-          title="Medicare Security Tax Rate"
+          title="Medicare Tax Rate"
           value={medicareTaxRate}
           type={DataItemType.Percentage}
           isSublist
         />
         <DataListItem
-          title="Medicare Security Tax Amount"
+          title="Medicare Tax Amount"
           value={medicareTaxAmount}
           type={DataItemType.DollarAmount}
           isSublist

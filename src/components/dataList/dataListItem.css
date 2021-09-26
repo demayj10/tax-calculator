@@ -1,6 +1,7 @@
 .dataItem {
     display: flex;
-    margin-right: 0;
+    /*margin-right: 0;*/
+    margin: 0.5em 0;
 }
 
 .dataItem > p {
