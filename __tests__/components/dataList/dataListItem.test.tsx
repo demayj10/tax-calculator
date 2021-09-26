@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '../../../src/app/test-utils';
 import '@testing-library/jest-dom';
 import DataListItem, { DataListItemProps } from '../../../src/components/dataList/dataListItem';
 import { DataItemType } from '../../../src/lib/data/dataItemType';
