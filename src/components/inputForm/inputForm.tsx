@@ -1,16 +1,18 @@
 import React, { BaseSyntheticEvent, FC } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from '@mui/material/Button';
-import { FieldUpdatePayload, InputFormState } from '../../types';
+import { FieldUpdatePayload } from '../../types';
 import { SupportedStatesList } from '../../lib/data/supportedStates';
 import { MaritalStatusList } from '../../lib/data/maritalStatus';
 import { useAppSelector } from '../../app/hooks';
-import { handleTextChange, resetInput, selectInputForm } from './inputFormSlice';
+import {
+  handleTextChange, InputFormState, resetInput, selectInputForm,
+} from './inputFormSlice';
 import { AppDispatch } from '../../app/store';
 import SelectMenu from '../selectMenu';
-import TextField from '../textField';
 
 import './inputForm.css';
+import IncomeInput from './incomeInput';
 
 export interface InputFormProps {
     submitInput(data: InputFormState): void;
@@ -19,13 +21,20 @@ export interface InputFormProps {
 const InputForm: FC<InputFormProps> = (inputFormProps: InputFormProps) => {
   const inputForm = useAppSelector(selectInputForm);
   const dispatch: AppDispatch = useDispatch();
-  const grossAnnualIncomeId = 'grossAnnualIncome';
   const selectedStateId = 'selectedState';
   const maritalStatusId = 'maritalStatus';
 
-  const { grossAnnualIncome, selectedState, maritalStatus } = inputForm;
+  const {
+    grossAnnualIncome,
+    selectedState,
+    maritalStatus,
+    hourly: {
+      hourlyRate,
+      averageHoursWorked,
+    },
+  } = inputForm;
   const isEnabled = (
-    grossAnnualIncome.length > 0
+    (grossAnnualIncome.length > 0 || (hourlyRate.length > 0 && averageHoursWorked.length > 0))
         && selectedState.length > 0
         && maritalStatus.length > 0
   );
@@ -45,13 +54,7 @@ const InputForm: FC<InputFormProps> = (inputFormProps: InputFormProps) => {
   return (
     <div id="formContainer" data-testid="input-form">
       <div id="input-items">
-        <TextField
-          label="Gross Annual Income"
-          id={grossAnnualIncomeId}
-          handleInputChange={handleInputChange}
-          testId="grossAnnualIncomeInput"
-          value={grossAnnualIncome}
-        />
+        <IncomeInput />
         <SelectMenu
           label="Which State do you live in?"
           id={selectedStateId}

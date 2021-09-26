@@ -17,7 +17,7 @@ export type Reducer = typeof rootReducer;
 export type RootState = ReturnType<Reducer>
 // Inferred type: {
 //    inputForm: InputFormState
-//    resultData: ResultDataState
+//    resultData: ResultDataState,
 // }
 export type Store = typeof store;
 

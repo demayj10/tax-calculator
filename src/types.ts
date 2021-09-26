@@ -36,11 +36,6 @@ export type TaxBracket = {
 
 export type FieldUpdatePayload = {
     field: string,
-    value: string | number
-}
-
-export type InputFormState = {
-    grossAnnualIncome: string,
-    selectedState: string,
-    maritalStatus: string
+    value: string | number,
+    type?: string,
 }
