@@ -4,10 +4,11 @@ import {
   TaxPayload,
 } from '../types';
 import { StatesWithoutIncomeTax, SupportedStates } from './data/supportedStates';
+import { indianaTaxBracketsArray } from './taxBrackets/stateTaxes/IN-IncomeTax';
 import {
   ohioIncomeTaxBracketsArray,
-  ohioIncomeTaxBracketsObject,
 } from './taxBrackets/stateTaxes/OH-IncomeTax';
+import { pennsylvaniaTaxBracketsArray } from './taxBrackets/stateTaxes/PA-IncomeTax';
 
 export const calculateStateIncomeTax = (
   annualIncome: number,
@@ -18,7 +19,6 @@ export const calculateStateIncomeTax = (
     taxRate,
     taxTotalToThisBracket,
   }: TaxBracket = stateIncomeTaxBracket;
-
   const amountTaxed: number = annualIncome - minimumToQualify;
   const taxAmount: number = (amountTaxed * taxRate) + taxTotalToThisBracket;
 
@@ -29,8 +29,12 @@ export const findStateTaxBracketList = (
   state: string,
 ): TaxBracket[] => {
   switch (state) {
+    case SupportedStates.Indiana:
+      return indianaTaxBracketsArray;
     case SupportedStates.Ohio:
       return ohioIncomeTaxBracketsArray;
+    case SupportedStates.Pennsylvania:
+      return pennsylvaniaTaxBracketsArray;
     default:
       return [];
   }
@@ -40,7 +44,7 @@ export const findStateIncomeTaxBracket = (
   annualIncome: number,
   stateIncomeBrackets: TaxBracket[],
 ): TaxBracket => {
-  let maxMinimum: TaxBracket = ohioIncomeTaxBracketsObject.ohioFirstBracket;
+  let maxMinimum: TaxBracket = stateIncomeBrackets[0];
   stateIncomeBrackets.forEach((bracket: TaxBracket) => {
     if (annualIncome > bracket.minimumToQualify) {
       if (bracket.minimumToQualify > maxMinimum.minimumToQualify) {

@@ -1,5 +1,7 @@
 export const enum SupportedStates {
+    Indiana = 'Indiana',
     Ohio = 'Ohio',
+    Pennsylvania = 'Pennsylvania',
     Washington = 'Washington'
 }
 
@@ -8,6 +10,8 @@ export const StatesWithoutIncomeTax = [
 ];
 
 export const SupportedStatesList = [
-  SupportedStates.Washington,
+  SupportedStates.Indiana,
   SupportedStates.Ohio,
+  SupportedStates.Pennsylvania,
+  SupportedStates.Washington,
 ];

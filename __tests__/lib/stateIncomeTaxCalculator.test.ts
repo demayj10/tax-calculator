@@ -10,6 +10,8 @@ import {
   findStateTaxBracketList,
 } from '../../src/lib/stateIncomeTaxCalculator';
 import { ONE_HUNDRED_THOUSAND } from '../../src/lib/taxBrackets/constants';
+import { pennsylvaniaTaxBracketsArray, pennsylvaniaTaxBracketsObject } from '../../src/lib/taxBrackets/stateTaxes/PA-IncomeTax';
+import { indianaTaxBracketsArray, indianaTaxBracketsObject } from '../../src/lib/taxBrackets/stateTaxes/IN-IncomeTax';
 
 describe('test findStateTaxBracketList', () => {
   test('should return the tax brackets for Ohio', () => {
@@ -78,5 +80,106 @@ describe('test calculateStateIncomeTax', () => {
     const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, taxBracket);
 
     expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+});
+
+describe('test Pennsylvania state income tax', () => {
+  test('should return state tax amount for Pennsylvania and income of $0', () => {
+    const state: string = SupportedStates.Pennsylvania;
+    const annualIncome = 0;
+
+    const expectedTaxBracketList: TaxBracket[] = pennsylvaniaTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = pennsylvaniaTaxBracketsObject.pennsylvaniaTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate: 0.0307,
+      taxAmount: 0,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+
+  test('should return state tax amount for Pennsylvania and income of $100,000', () => {
+    const state: string = SupportedStates.Pennsylvania;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = pennsylvaniaTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = pennsylvaniaTaxBracketsObject.pennsylvaniaTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate: 0.0307,
+      taxAmount: 3070,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+});
+
+describe('test Indiana state income tax', () => {
+  test('should return state tax amount for Indiana and income of $0', () => {
+    const state: string = SupportedStates.Indiana;
+    const annualIncome = 0;
+
+    const expectedTaxBracketList: TaxBracket[] = indianaTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = indianaTaxBracketsObject.indianaTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate: 0.0323,
+      taxAmount: 0,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+
+  test('should return state tax amount for Indiana and income of $100,000', () => {
+    const state: string = SupportedStates.Indiana;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = indianaTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = indianaTaxBracketsObject.indianaTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate: 0.0323,
+      taxAmount: 3230,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+    const roundedAmount: number = Math.round(actualBreakdown.taxAmount);
+    const roundedBreakdown: TaxPayload = {
+      taxRate: actualBreakdown.taxRate,
+      taxAmount: roundedAmount,
+    };
+
+    expect(roundedBreakdown).toEqual(expectedBreakdown);
   });
 });
