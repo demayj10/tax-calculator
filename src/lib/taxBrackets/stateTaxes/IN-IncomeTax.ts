@@ -6,10 +6,10 @@ export const indianaTaxBracket: TaxBracket = {
   taxTotalToThisBracket: 0,
 };
 
-export const indianaTaxBracketsArray: TaxBracket[] = [
+export const indianaIncomeTaxBracketsArray: TaxBracket[] = [
   indianaTaxBracket,
 ];
 
-export const indianaTaxBracketsObject = {
+export const indianaIncomeTaxBracketsObject = {
   indianaTaxBracket,
 };

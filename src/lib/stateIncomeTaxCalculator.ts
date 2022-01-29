@@ -3,12 +3,19 @@ import {
   TaxBracket,
   TaxPayload,
 } from '../types';
+import { MaritalStatus } from './data/maritalStatus';
 import { StatesWithoutIncomeTax, SupportedStates } from './data/supportedStates';
-import { indianaTaxBracketsArray } from './taxBrackets/stateTaxes/IN-IncomeTax';
-import {
-  ohioIncomeTaxBracketsArray,
-} from './taxBrackets/stateTaxes/OH-IncomeTax';
+import { iowaIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/IA-IncomeTax';
+import { illinoisIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/IL-IncomeTax';
+import { indianaIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/IN-IncomeTax';
+import { kansasMarriedIncomeTaxBracketsArray, kansasSingleIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/KS-IncomeTax';
+import { michiganIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/MI-IncomeTax';
+import { minnesotaMarriedIncomeTaxBracketsArray, minnesotaSingleIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/MN-IncomeTax';
+import { northDakotaMarriedIncomeTaxBracketsArray, northDakotaSingleIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/ND-IncomeTax';
+import { nebraskaMarriedIncomeTaxBracketsArray, nebraskaSingleIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/NE-IncomeTax';
+import { ohioIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/OH-IncomeTax';
 import { pennsylvaniaTaxBracketsArray } from './taxBrackets/stateTaxes/PA-IncomeTax';
+import { wisconsinMarriedIncomeTaxBracketsArray, wisconsinSingleIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/WI-IncomeTax';
 
 export const calculateStateIncomeTax = (
   annualIncome: number,
@@ -27,14 +34,57 @@ export const calculateStateIncomeTax = (
 
 export const findStateTaxBracketList = (
   state: string,
+  maritalStatus: string,
 ): TaxBracket[] => {
   switch (state) {
+    case SupportedStates.Illinois:
+      return illinoisIncomeTaxBracketsArray;
     case SupportedStates.Indiana:
-      return indianaTaxBracketsArray;
+      return indianaIncomeTaxBracketsArray;
+    case SupportedStates.Iowa:
+      return iowaIncomeTaxBracketsArray;
+    case SupportedStates.Kansas:
+      switch (maritalStatus) {
+        case MaritalStatus.Single:
+          return kansasSingleIncomeTaxBracketsArray;
+        // Married status case
+        default:
+          return kansasMarriedIncomeTaxBracketsArray;
+      }
+    case SupportedStates.Michigan:
+      return michiganIncomeTaxBracketsArray;
+    case SupportedStates.Minnesota:
+      switch (maritalStatus) {
+        case MaritalStatus.Single:
+          return minnesotaSingleIncomeTaxBracketsArray;
+        default:
+          return minnesotaMarriedIncomeTaxBracketsArray;
+      }
+    case SupportedStates.Nebraska:
+      switch (maritalStatus) {
+        case MaritalStatus.Single:
+          return nebraskaSingleIncomeTaxBracketsArray;
+        default:
+          return nebraskaMarriedIncomeTaxBracketsArray;
+      }
+    case SupportedStates.NorthDakota:
+      switch (maritalStatus) {
+        case MaritalStatus.Single:
+          return northDakotaSingleIncomeTaxBracketsArray;
+        default:
+          return northDakotaMarriedIncomeTaxBracketsArray;
+      }
     case SupportedStates.Ohio:
       return ohioIncomeTaxBracketsArray;
     case SupportedStates.Pennsylvania:
       return pennsylvaniaTaxBracketsArray;
+    case SupportedStates.Wisconsin:
+      switch (maritalStatus) {
+        case MaritalStatus.Single:
+          return wisconsinSingleIncomeTaxBracketsArray;
+        default:
+          return wisconsinMarriedIncomeTaxBracketsArray;
+      }
     default:
       return [];
   }
@@ -58,6 +108,7 @@ export const findStateIncomeTaxBracket = (
 
 export const calculateStateTaxes = (
   state: string,
+  maritalStatus: string,
   annualIncome: number,
 ): StateTaxBreakdown => {
   // If it is not a state with income tax
@@ -69,7 +120,7 @@ export const calculateStateTaxes = (
       hasStateIncomeTax: false,
     };
   }
-  const stateIncomeTaxBrackets: TaxBracket[] = findStateTaxBracketList(state);
+  const stateIncomeTaxBrackets: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
   const stateIncomeTaxBracket: TaxBracket = findStateIncomeTaxBracket(annualIncome,
     stateIncomeTaxBrackets);
   const {
