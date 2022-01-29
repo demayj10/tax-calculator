@@ -10,7 +10,7 @@ export const generateTaxReport = (
   maritalStatus: string,
 ): TaxBreakdown => {
   const federalTaxes: FederalTaxBreakdown = calculateFederalTaxes(annualIncome, maritalStatus);
-  const stateTaxes: StateTaxBreakdown = calculateStateTaxes(state, annualIncome);
+  const stateTaxes: StateTaxBreakdown = calculateStateTaxes(state, maritalStatus, annualIncome);
 
   const { totalFederalTaxAmount } = federalTaxes;
   const { totalStateTaxAmount } = stateTaxes;

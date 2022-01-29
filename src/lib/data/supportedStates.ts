@@ -1,17 +1,54 @@
 export const enum SupportedStates {
+    Alaska = 'Alaska',
+    Florida = 'Florida',
+    Illinois = 'Illinois',
     Indiana = 'Indiana',
+    Iowa = 'Iowa',
+    Kansas = 'Kansas',
+    Michigan = 'Michigan',
+    Minnesota = 'Minnesota',
+    Nebraska = 'Nebraska',
+    Nevada = 'Nevada',
+    NorthDakota = 'North Dakota',
     Ohio = 'Ohio',
     Pennsylvania = 'Pennsylvania',
-    Washington = 'Washington'
+    SouthDakota = 'South Dakota',
+    Tennessee = 'Tennessee',
+    Texas = 'Texas',
+    Washington = 'Washington',
+    Wisconsin = 'Wisconsin',
+    Wyoming = 'Wyoming'
 }
 
 export const StatesWithoutIncomeTax = [
+  SupportedStates.Alaska,
+  SupportedStates.Florida,
+  SupportedStates.Nevada,
+  SupportedStates.SouthDakota,
+  SupportedStates.Tennessee,
+  SupportedStates.Texas,
   SupportedStates.Washington,
+  SupportedStates.Wyoming,
 ];
 
 export const SupportedStatesList = [
+  SupportedStates.Alaska,
+  SupportedStates.Florida,
+  SupportedStates.Illinois,
   SupportedStates.Indiana,
+  SupportedStates.Iowa,
+  SupportedStates.Kansas,
+  SupportedStates.Michigan,
+  SupportedStates.Minnesota,
+  SupportedStates.Nebraska,
+  SupportedStates.Nevada,
+  SupportedStates.NorthDakota,
   SupportedStates.Ohio,
   SupportedStates.Pennsylvania,
+  SupportedStates.SouthDakota,
+  SupportedStates.Tennessee,
+  SupportedStates.Texas,
   SupportedStates.Washington,
+  SupportedStates.Wisconsin,
+  SupportedStates.Wyoming,
 ];
