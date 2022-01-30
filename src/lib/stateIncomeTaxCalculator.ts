@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import {
   StateTaxBreakdown,
   TaxBracket,
@@ -5,6 +6,7 @@ import {
 } from '../types';
 import { MaritalStatus } from './data/maritalStatus';
 import { StatesWithoutIncomeTax, SupportedStates } from './data/supportedStates';
+import { arizonaMarriedIncomeTaxBracketsArray, arizonaSingleIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/AZ-IncomeTax';
 import { iowaIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/IA-IncomeTax';
 import { illinoisIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/IL-IncomeTax';
 import { indianaIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/IN-IncomeTax';
@@ -13,7 +15,13 @@ import { michiganIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/MI-Inco
 import { minnesotaMarriedIncomeTaxBracketsArray, minnesotaSingleIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/MN-IncomeTax';
 import { northDakotaMarriedIncomeTaxBracketsArray, northDakotaSingleIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/ND-IncomeTax';
 import { nebraskaMarriedIncomeTaxBracketsArray, nebraskaSingleIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/NE-IncomeTax';
+import {
+  newMexicoMarriedFilingSeparatelyIncomeTaxBracketsArray,
+  newMexicoMarriedIncomeTaxBracketsArray,
+  newMexicoSingleIncomeTaxBracketsArray,
+} from './taxBrackets/stateTaxes/NM-IncomeTax';
 import { ohioIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/OH-IncomeTax';
+import { oklahomaMarriedIncomeTaxBracketsArray, oklahomaSingleIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/OK-IncomeTax';
 import { pennsylvaniaTaxBracketsArray } from './taxBrackets/stateTaxes/PA-IncomeTax';
 import { wisconsinMarriedIncomeTaxBracketsArray, wisconsinSingleIncomeTaxBracketsArray } from './taxBrackets/stateTaxes/WI-IncomeTax';
 
@@ -37,6 +45,13 @@ export const findStateTaxBracketList = (
   maritalStatus: string,
 ): TaxBracket[] => {
   switch (state) {
+    case SupportedStates.Arizona:
+      switch (maritalStatus) {
+        case MaritalStatus.Single:
+          return arizonaSingleIncomeTaxBracketsArray;
+        default:
+          return arizonaMarriedIncomeTaxBracketsArray;
+      }
     case SupportedStates.Illinois:
       return illinoisIncomeTaxBracketsArray;
     case SupportedStates.Indiana:
@@ -67,6 +82,15 @@ export const findStateTaxBracketList = (
         default:
           return nebraskaMarriedIncomeTaxBracketsArray;
       }
+    case SupportedStates.NewMexico:
+      switch (maritalStatus) {
+        case MaritalStatus.Single:
+          return newMexicoSingleIncomeTaxBracketsArray;
+        case MaritalStatus.MarriedSeparately:
+          return newMexicoMarriedFilingSeparatelyIncomeTaxBracketsArray;
+        default:
+          return newMexicoMarriedIncomeTaxBracketsArray;
+      }
     case SupportedStates.NorthDakota:
       switch (maritalStatus) {
         case MaritalStatus.Single:
@@ -76,6 +100,13 @@ export const findStateTaxBracketList = (
       }
     case SupportedStates.Ohio:
       return ohioIncomeTaxBracketsArray;
+    case SupportedStates.Oklahoma:
+      switch (maritalStatus) {
+        case MaritalStatus.Single:
+          return oklahomaSingleIncomeTaxBracketsArray;
+        default:
+          return oklahomaMarriedIncomeTaxBracketsArray;
+      }
     case SupportedStates.Pennsylvania:
       return pennsylvaniaTaxBracketsArray;
     case SupportedStates.Wisconsin:

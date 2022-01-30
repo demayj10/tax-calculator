@@ -1,6 +1,6 @@
 import { TaxBracket } from '../../../types';
 
-export const michiganTaxBracket: TaxBracket = {
+const michiganTaxBracket: TaxBracket = {
   minimumToQualify: 0,
   taxRate: 0.0425,
   taxTotalToThisBracket: 0,
