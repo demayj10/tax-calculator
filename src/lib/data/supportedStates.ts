@@ -1,5 +1,6 @@
 export const enum SupportedStates {
     Alaska = 'Alaska',
+    Arizona = 'Arizona',
     Florida = 'Florida',
     Illinois = 'Illinois',
     Indiana = 'Indiana',
@@ -9,8 +10,10 @@ export const enum SupportedStates {
     Minnesota = 'Minnesota',
     Nebraska = 'Nebraska',
     Nevada = 'Nevada',
+    NewMexico = 'New Mexico',
     NorthDakota = 'North Dakota',
     Ohio = 'Ohio',
+    Oklahoma = 'Oklahoma',
     Pennsylvania = 'Pennsylvania',
     SouthDakota = 'South Dakota',
     Tennessee = 'Tennessee',
@@ -33,6 +36,7 @@ export const StatesWithoutIncomeTax = [
 
 export const SupportedStatesList = [
   SupportedStates.Alaska,
+  SupportedStates.Arizona,
   SupportedStates.Florida,
   SupportedStates.Illinois,
   SupportedStates.Indiana,
@@ -41,9 +45,11 @@ export const SupportedStatesList = [
   SupportedStates.Michigan,
   SupportedStates.Minnesota,
   SupportedStates.Nebraska,
+  SupportedStates.NewMexico,
   SupportedStates.Nevada,
   SupportedStates.NorthDakota,
   SupportedStates.Ohio,
+  SupportedStates.Oklahoma,
   SupportedStates.Pennsylvania,
   SupportedStates.SouthDakota,
   SupportedStates.Tennessee,
