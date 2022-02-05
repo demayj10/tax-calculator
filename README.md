@@ -1,4 +1,6 @@
 # Tax Calculator (Income)
+[![CI](https://github.com/demayj10/tax-calculator/actions/workflows/CI.yml/badge.svg)](https://github.com/demayj10/tax-calculator/actions/workflows/CI.yml)
+[![CD to GitHub pages](https://github.com/demayj10/tax-calculator/actions/workflows/CD.yml/badge.svg)](https://github.com/demayj10/tax-calculator/actions/workflows/CD.yml)
 
 Web Application that takes user information including,
  - Gross Annual Income
