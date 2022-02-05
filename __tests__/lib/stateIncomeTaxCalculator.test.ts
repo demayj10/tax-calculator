@@ -67,6 +67,28 @@ import {
   oklahomaSingleIncomeTaxBracketsArray,
   oklahomaSingleIncomeTaxBracketsObject,
 } from '../../src/lib/taxBrackets/stateTaxes/OK-IncomeTax';
+import { northCarolinaIncomeTaxBracketsArray, northCarolinaIncomeTaxBracketsObject } from '../../src/lib/taxBrackets/stateTaxes/NC-IncomeTax';
+import { arkansasIncomeTaxBracketsArray, arkansasIncomeTaxBracketsObject } from '../../src/lib/taxBrackets/stateTaxes/AR-IncomeTax';
+import {
+  alabamaMarriedIncomeTaxBracketsArray,
+  alabamaMarriedIncomeTaxBracketsObject,
+  alabamaSingleIncomeTaxBracketsArray,
+  alabamaSingleIncomeTaxBracketsObject,
+} from '../../src/lib/taxBrackets/stateTaxes/AL-IncomeTax';
+import {
+  georgiaMarriedIncomeTaxBracketsArray,
+  georgiaMarriedIncomeTaxBracketsObject,
+  georgiaSingleIncomeTaxBracketsArray,
+  georgiaSingleIncomeTaxBracketsObject,
+} from '../../src/lib/taxBrackets/stateTaxes/GA-IncomeTax';
+import {
+  louisianaMarriedIncomeTaxBracketsArray,
+  louisianaMarriedIncomeTaxBracketsObject,
+  louisianaSingleIncomeTaxBracketsArray,
+  louisianaSingleIncomeTaxBracketsObject,
+} from '../../src/lib/taxBrackets/stateTaxes/LA-IncomeTax';
+import { mississippiIncomeTaxBracketsArray, mississippiIncomeTaxBracketsObject } from '../../src/lib/taxBrackets/stateTaxes/MS-IncomeTax';
+import { southCarolinaIncomeTaxBracketsArray, southCarolinaIncomeTaxBracketsObject } from '../../src/lib/taxBrackets/stateTaxes/SC-IncomeTax';
 
 describe('test findStateTaxBracketList', () => {
   test('should return the tax brackets for Ohio', () => {
@@ -141,6 +163,95 @@ describe('test calculateStateIncomeTax', () => {
       taxAmount: expectedTaxAmount,
     };
     const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, taxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+});
+
+describe('test Alabama state income tax', () => {
+  test('should return state tax amount for Alabama and income of $0, single status', () => {
+    const state: string = SupportedStates.Alabama;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = 0;
+
+    const expectedTaxBracketList: TaxBracket[] = alabamaSingleIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      alabamaSingleIncomeTaxBracketsObject.alabamaFirstBracket
+    );
+    const { taxRate } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: 0,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+
+  test('should return state tax amount for Alabama and income of $100,000, single status', () => {
+    const state: string = SupportedStates.Alabama;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = alabamaSingleIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      alabamaSingleIncomeTaxBracketsObject.alabamaSingleThirdBracket
+    );
+    const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+    const expectedTaxAmount: number = (
+      (annualIncome - minimumToQualify) * taxRate + taxTotalToThisBracket
+    );
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: expectedTaxAmount,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+
+  test('should return state tax amount for Alabama and income of $100,000, married status', () => {
+    const state: string = SupportedStates.Alabama;
+    const maritalStatus: string = MaritalStatus.MarriedJointly;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = alabamaMarriedIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      alabamaMarriedIncomeTaxBracketsObject.alabamaMarriedThirdBracket
+    );
+    const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+    const expectedTaxAmount: number = (
+      (annualIncome - minimumToQualify) * taxRate + taxTotalToThisBracket
+    );
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: expectedTaxAmount,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
 
     expect(actualBreakdown).toEqual(expectedBreakdown);
   });
@@ -255,6 +366,95 @@ describe('test Arizona state income tax', () => {
   });
 });
 
+describe('test Arkansas state income tax', () => {
+  test('should return state tax amount for Arkansas and income of $0, single status', () => {
+    const state: string = SupportedStates.Arkansas;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = 0;
+
+    const expectedTaxBracketList: TaxBracket[] = arkansasIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      arkansasIncomeTaxBracketsObject.arkansasFirstBracket
+    );
+    const { taxRate } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: 0,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+
+  test('should return state tax amount for Arkansas and income of $100,000, single status', () => {
+    const state: string = SupportedStates.Arkansas;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = arkansasIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      arkansasIncomeTaxBracketsObject.arkansasFourthBracket
+    );
+    const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+    const expectedTaxAmount: number = (
+      (annualIncome - minimumToQualify) * taxRate + taxTotalToThisBracket
+    );
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: expectedTaxAmount,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+
+  test('should return state tax amount for Arkansas and income of $100,000, married status', () => {
+    const state: string = SupportedStates.Arkansas;
+    const maritalStatus: string = MaritalStatus.MarriedJointly;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = arkansasIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      arkansasIncomeTaxBracketsObject.arkansasFourthBracket
+    );
+    const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+    const expectedTaxAmount: number = (
+      (annualIncome - minimumToQualify) * taxRate + taxTotalToThisBracket
+    );
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: expectedTaxAmount,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+});
+
 describe('test Florida state income tax', () => {
   test('should return state tax amount of nothing for Florida and income of $100,000', () => {
     const state: string = SupportedStates.Florida;
@@ -270,6 +470,95 @@ describe('test Florida state income tax', () => {
     const actualBreakdown: StateTaxBreakdown = calculateStateTaxes(
       state, maritalStatus, annualIncome,
     );
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+});
+
+describe('test Georgia state income tax', () => {
+  test('should return state tax amount for Georgia and income of $0, single status', () => {
+    const state: string = SupportedStates.Georgia;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = 0;
+
+    const expectedTaxBracketList: TaxBracket[] = georgiaSingleIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      georgiaSingleIncomeTaxBracketsObject.georgiaFirstBracket
+    );
+    const { taxRate } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: 0,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+
+  test('should return state tax amount for Georgia and income of $100,000, single status', () => {
+    const state: string = SupportedStates.Georgia;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = georgiaSingleIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      georgiaSingleIncomeTaxBracketsObject.georgiaSingleSixthBracket
+    );
+    const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+    const expectedTaxAmount: number = (
+      (annualIncome - minimumToQualify) * taxRate + taxTotalToThisBracket
+    );
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: expectedTaxAmount,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+
+  test('should return state tax amount for Georgia and income of $100,000, married status', () => {
+    const state: string = SupportedStates.Georgia;
+    const maritalStatus: string = MaritalStatus.MarriedJointly;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = georgiaMarriedIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      georgiaMarriedIncomeTaxBracketsObject.georgiaMarriedSixthBracket
+    );
+    const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+    const expectedTaxAmount: number = (
+      (annualIncome - minimumToQualify) * taxRate + taxTotalToThisBracket
+    );
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: expectedTaxAmount,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
 
     expect(actualBreakdown).toEqual(expectedBreakdown);
   });
@@ -532,6 +821,95 @@ describe('test Kansas state income tax', () => {
   });
 });
 
+describe('test Louisiana state income tax', () => {
+  test('should return state tax amount for Louisiana and income of $0, single status', () => {
+    const state: string = SupportedStates.Louisiana;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = 0;
+
+    const expectedTaxBracketList: TaxBracket[] = louisianaSingleIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      louisianaSingleIncomeTaxBracketsObject.louisianaFirstBracket
+    );
+    const { taxRate } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: 0,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+
+  test('should return state tax amount for Louisiana and income of $100,000, single status', () => {
+    const state: string = SupportedStates.Louisiana;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = louisianaSingleIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      louisianaSingleIncomeTaxBracketsObject.louisianaSingleThirdBracket
+    );
+    const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+    const expectedTaxAmount: number = (
+      (annualIncome - minimumToQualify) * taxRate + taxTotalToThisBracket
+    );
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: expectedTaxAmount,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+
+  test('should return state tax amount for Louisiana and income of $100,000, married status', () => {
+    const state: string = SupportedStates.Louisiana;
+    const maritalStatus: string = MaritalStatus.MarriedJointly;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = louisianaMarriedIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      louisianaMarriedIncomeTaxBracketsObject.louisianaMarriedSecondBracket
+    );
+    const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+    const expectedTaxAmount: number = (
+      (annualIncome - minimumToQualify) * taxRate + taxTotalToThisBracket
+    );
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: expectedTaxAmount,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+});
+
 describe('test Michigan state income tax', () => {
   test('should return state tax amount for Michigan and income of $0', () => {
     const state: string = SupportedStates.Michigan;
@@ -657,6 +1035,65 @@ describe('test Minnesota state income tax', () => {
 
     const expectedTaxBracket: TaxBracket = (
       minnesotaMarriedIncomeTaxBracketsObject.minnesotaMarriedSecondBracket
+    );
+    const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+    const expectedTaxAmount: number = (
+      (annualIncome - minimumToQualify) * taxRate + taxTotalToThisBracket
+    );
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: expectedTaxAmount,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+});
+
+describe('test Mississippi state income tax', () => {
+  test('should return state tax amount for Mississippi and income of $0, single status', () => {
+    const state: string = SupportedStates.Mississippi;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = 0;
+
+    const expectedTaxBracketList: TaxBracket[] = mississippiIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      mississippiIncomeTaxBracketsObject.mississippiZeroBracket
+    );
+    const { taxRate } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: 0,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+
+  test('should return state tax amount for Mississippi and income of $100,000, single status', () => {
+    const state: string = SupportedStates.Mississippi;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = mississippiIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      mississippiIncomeTaxBracketsObject.mississippiThirdBracket
     );
     const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
     const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
@@ -994,6 +1431,38 @@ describe('test North Dakota state income tax', () => {
   });
 });
 
+describe('test North Carolina state income tax', () => {
+  test('should return state tax amount of nothing for North Carolina and income of $100,000', () => {
+    const state: string = SupportedStates.NorthCarolina;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = northCarolinaIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      northCarolinaIncomeTaxBracketsObject.northCarolinaFirstBracket
+    );
+    const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+    const expectedTaxAmount: number = (
+      (annualIncome - minimumToQualify) * taxRate + taxTotalToThisBracket
+    );
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: expectedTaxAmount,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+});
+
 describe('test Ohio state income tax', () => {
   test('should return state tax amount for Ohio and income of $0', () => {
     const state: string = SupportedStates.Ohio;
@@ -1175,6 +1644,65 @@ describe('test Pennsylvania state income tax', () => {
     expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
 
     const expectedTaxBracket: TaxBracket = pennsylvaniaTaxBracketsObject.pennsylvaniaTaxBracket;
+    const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+    const expectedTaxAmount: number = (
+      (annualIncome - minimumToQualify) * taxRate + taxTotalToThisBracket
+    );
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: expectedTaxAmount,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+});
+
+describe('test South Carolina state income tax', () => {
+  test('should return state tax amount for South Carolina and income of $0', () => {
+    const state: string = SupportedStates.SouthCarolina;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = 0;
+
+    const expectedTaxBracketList: TaxBracket[] = southCarolinaIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      southCarolinaIncomeTaxBracketsObject.southCarolinaFirstBracket
+    );
+    const { taxRate } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: 0,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+
+  test('should return state tax amount for South Carolina and income of $100,000', () => {
+    const state: string = SupportedStates.SouthCarolina;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = southCarolinaIncomeTaxBracketsArray;
+    const actualTaxBracketList: TaxBracket[] = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+
+    const expectedTaxBracket: TaxBracket = (
+      southCarolinaIncomeTaxBracketsObject.southCarolinaSixthBracket
+    );
     const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
     const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
 
