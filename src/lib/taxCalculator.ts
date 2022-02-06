@@ -10,11 +10,7 @@ import {
   SINGLE_STANDARD_DEDUCTION_2022,
 } from './taxBrackets/constants';
 
-export const generateTaxReport = (
-  state: string,
-  annualIncome: number,
-  maritalStatus: string,
-): TaxBreakdown => {
+export const generateTaxReport = (state: string, annualIncome: number, maritalStatus: string): TaxBreakdown => {
   let standardDeduction: number;
   switch (maritalStatus) {
     case MaritalStatus.Single:
@@ -31,20 +27,14 @@ export const generateTaxReport = (
   if (adjustedAnnualIncome < 0) {
     adjustedAnnualIncome = 0;
   }
-  const federalTaxes: FederalTaxBreakdown = calculateFederalTaxes(
-    adjustedAnnualIncome, maritalStatus,
-  );
-  const stateTaxes: StateTaxBreakdown = calculateStateTaxes(
-    state, maritalStatus, adjustedAnnualIncome,
-  );
+
+  const federalTaxes: FederalTaxBreakdown = calculateFederalTaxes(adjustedAnnualIncome, maritalStatus);
+  const stateTaxes: StateTaxBreakdown = calculateStateTaxes(state, maritalStatus, adjustedAnnualIncome);
 
   const { totalFederalTaxAmount } = federalTaxes;
   const { totalStateTaxAmount } = stateTaxes;
 
-  const totalTaxes: number = (
-    totalFederalTaxAmount
-        + totalStateTaxAmount
-  );
+  const totalTaxes: number = totalFederalTaxAmount + totalStateTaxAmount;
   const netAnnualIncome: number = annualIncome - totalTaxes;
 
   return {

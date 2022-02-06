@@ -123,7 +123,7 @@ const hawaiiMarriedThirdBracket: TaxBracket = {
   ),
 };
 
-const hawaiiaMarriedFourthBracket: TaxBracket = {
+const hawaiiMarriedFourthBracket: TaxBracket = {
   minimumToQualify: 19201,
   taxRate: 0.064,
   taxTotalToThisBracket: (
@@ -132,21 +132,21 @@ const hawaiiaMarriedFourthBracket: TaxBracket = {
   ),
 };
 
-const hawaiiaMarriedFifthBracket: TaxBracket = {
+const hawaiiMarriedFifthBracket: TaxBracket = {
   minimumToQualify: 28801,
   taxRate: 0.068,
   taxTotalToThisBracket: (
-    hawaiiaMarriedFourthBracket.taxTotalToThisBracket
-            + (28800 - hawaiiaMarriedFourthBracket.minimumToQualify) * hawaiiaMarriedFourthBracket.taxRate
+    hawaiiMarriedFourthBracket.taxTotalToThisBracket
+            + (28800 - hawaiiMarriedFourthBracket.minimumToQualify) * hawaiiMarriedFourthBracket.taxRate
   ),
 };
 
-const hawaiiaMarriedSixthBracket: TaxBracket = {
+const hawaiiMarriedSixthBracket: TaxBracket = {
   minimumToQualify: 38401,
   taxRate: 0.072,
   taxTotalToThisBracket: (
-    hawaiiaMarriedFifthBracket.taxTotalToThisBracket
-            + (38400 - hawaiiaMarriedFifthBracket.minimumToQualify) * hawaiiaMarriedFifthBracket.taxRate
+    hawaiiMarriedFifthBracket.taxTotalToThisBracket
+            + (38400 - hawaiiMarriedFifthBracket.minimumToQualify) * hawaiiMarriedFifthBracket.taxRate
   ),
 };
 
@@ -154,8 +154,8 @@ const hawaiiMarriedSeventhBracket: TaxBracket = {
   minimumToQualify: 48001,
   taxRate: 0.076,
   taxTotalToThisBracket: (
-    hawaiiaMarriedSixthBracket.taxTotalToThisBracket
-            + (48000 - hawaiiaMarriedSixthBracket.minimumToQualify) * hawaiiaMarriedSixthBracket.taxRate
+    hawaiiMarriedSixthBracket.taxTotalToThisBracket
+            + (48000 - hawaiiMarriedSixthBracket.minimumToQualify) * hawaiiMarriedSixthBracket.taxRate
   ),
 };
 
@@ -238,9 +238,9 @@ export const hawaiiMarriedIncomeTaxBracketsArray: TaxBracket[] = [
   hawaiiFirstBracket,
   hawaiiMarriedSecondBracket,
   hawaiiMarriedThirdBracket,
-  hawaiiaMarriedFourthBracket,
-  hawaiiaMarriedFifthBracket,
-  hawaiiaMarriedSixthBracket,
+  hawaiiMarriedFourthBracket,
+  hawaiiMarriedFifthBracket,
+  hawaiiMarriedSixthBracket,
   hawaiiMarriedSeventhBracket,
   hawaiiMarriedEighthBracket,
   hawaiiMarriedNinthBracket,
@@ -253,9 +253,9 @@ export const hawaiiMarriedIncomeTaxBracketsObject = {
   hawaiiFirstBracket,
   hawaiiMarriedSecondBracket,
   hawaiiMarriedThirdBracket,
-  hawaiiaMarriedFourthBracket,
-  hawaiiaMarriedFifthBracket,
-  hawaiiaMarriedSixthBracket,
+  hawaiiMarriedFourthBracket,
+  hawaiiMarriedFifthBracket,
+  hawaiiMarriedSixthBracket,
   hawaiiMarriedSeventhBracket,
   hawaiiMarriedEighthBracket,
   hawaiiMarriedNinthBracket,

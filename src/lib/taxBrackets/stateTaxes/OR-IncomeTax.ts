@@ -9,40 +9,54 @@ const oregonFirstBracket: TaxBracket = {
 const oregonSingleSecondBracket: TaxBracket = {
   minimumToQualify: 3351,
   taxRate: 0.07,
-  taxTotalToThisBracket: 167.50,
+  taxTotalToThisBracket: (
+    oregonFirstBracket.taxTotalToThisBracket
+      + (3350 - oregonFirstBracket.minimumToQualify) * oregonFirstBracket.taxRate
+  ),
 };
 
 const oregonSingleThirdBracket: TaxBracket = {
   minimumToQualify: 8401,
   taxRate: 0.09,
-  taxTotalToThisBracket: 520.93,
+  taxTotalToThisBracket: (
+    oregonSingleSecondBracket.taxTotalToThisBracket
+      + (8400 - oregonSingleSecondBracket.minimumToQualify) * oregonSingleSecondBracket.taxRate
+  ),
 };
 
 const oregonSingleFourthBracket: TaxBracket = {
   minimumToQualify: 125001,
   taxRate: 0.099,
   taxTotalToThisBracket: (
-    oregonSingleThirdBracket.taxTotalToThisBracket + 10494
+    oregonSingleThirdBracket.taxTotalToThisBracket
+      + (125000 - oregonSingleThirdBracket.minimumToQualify) * oregonSingleThirdBracket.taxRate
   ),
 };
 
 const oregonMarriedSecondBracket: TaxBracket = {
   minimumToQualify: 6701,
   taxRate: 0.07,
-  taxTotalToThisBracket: 335,
+  taxTotalToThisBracket: (
+    oregonFirstBracket.taxTotalToThisBracket
+      + (6700 - oregonFirstBracket.minimumToQualify) * oregonFirstBracket.taxRate
+  ),
 };
 
 const oregonMarriedThirdBracket: TaxBracket = {
   minimumToQualify: 16801,
   taxRate: 0.09,
-  taxTotalToThisBracket: 706.93,
+  taxTotalToThisBracket: (
+    oregonMarriedSecondBracket.taxTotalToThisBracket
+      + (16800 - oregonMarriedSecondBracket.minimumToQualify) * oregonMarriedSecondBracket.taxRate
+  ),
 };
 
 const oregonMarriedFourthBracket: TaxBracket = {
   minimumToQualify: 250001,
   taxRate: 0.099,
   taxTotalToThisBracket: (
-    oregonMarriedThirdBracket.taxTotalToThisBracket + 20988
+    oregonMarriedThirdBracket.taxTotalToThisBracket
+      + (250000 - oregonMarriedThirdBracket.minimumToQualify) * oregonMarriedThirdBracket.taxRate
   ),
 };
 
