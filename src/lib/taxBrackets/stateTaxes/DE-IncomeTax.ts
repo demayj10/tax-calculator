@@ -44,7 +44,7 @@ const delawareFifthBracket: TaxBracket = {
 
 const delawareSixthBracket: TaxBracket = {
   minimumToQualify: 25001,
-  taxRate: 0.055,
+  taxRate: 0.0555,
   taxTotalToThisBracket: (
     delawareFifthBracket.taxTotalToThisBracket
           + (25000 - delawareFifthBracket.minimumToQualify) * delawareFifthBracket.taxRate
