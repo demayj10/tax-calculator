@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/tax-calculator/static/css/main.b8a60262.chunk.css",
-    "main.js": "/tax-calculator/static/js/main.8749526e.chunk.js",
-    "main.js.map": "/tax-calculator/static/js/main.8749526e.chunk.js.map",
+    "main.js": "/tax-calculator/static/js/main.83968805.chunk.js",
+    "main.js.map": "/tax-calculator/static/js/main.83968805.chunk.js.map",
     "runtime-main.js": "/tax-calculator/static/js/runtime-main.ddd1aa9e.js",
     "runtime-main.js.map": "/tax-calculator/static/js/runtime-main.ddd1aa9e.js.map",
     "static/js/2.d41c05db.chunk.js": "/tax-calculator/static/js/2.d41c05db.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ddd1aa9e.js",
     "static/js/2.d41c05db.chunk.js",
     "static/css/main.b8a60262.chunk.css",
-    "static/js/main.8749526e.chunk.js"
+    "static/js/main.83968805.chunk.js"
   ]
 }
