@@ -7,11 +7,11 @@ const mississippiZeroBracket: TaxBracket = {
 };
 
 const mississippiFirstBracket: TaxBracket = {
-  minimumToQualify: 1001,
+  minimumToQualify: 3001,
   taxRate: 0.03,
   taxTotalToThisBracket: (
     mississippiZeroBracket.taxTotalToThisBracket
-          + (1000 - mississippiZeroBracket.minimumToQualify) * mississippiZeroBracket.taxRate
+          + (3000 - mississippiZeroBracket.minimumToQualify) * mississippiZeroBracket.taxRate
   ),
 };
 

@@ -504,7 +504,7 @@ describe('test Arkansas state income tax', () => {
 
     expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
 
-    const expectedTaxBracket: TaxBracket = arkansasIncomeTaxBracketsObject.arkansasFourthBracket;
+    const expectedTaxBracket: TaxBracket = arkansasIncomeTaxBracketsObject.arkansasSixthBracket;
     const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
     const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
 
@@ -532,7 +532,7 @@ describe('test Arkansas state income tax', () => {
 
     expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
 
-    const expectedTaxBracket: TaxBracket = arkansasIncomeTaxBracketsObject.arkansasFourthBracket;
+    const expectedTaxBracket: TaxBracket = arkansasIncomeTaxBracketsObject.arkansasSixthBracket;
     const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
     const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
 

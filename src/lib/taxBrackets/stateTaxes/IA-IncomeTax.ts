@@ -2,71 +2,71 @@ import { TaxBracket } from '../../../types';
 
 const iowaFirstBracket: TaxBracket = {
   minimumToQualify: 0,
-  taxRate: 0.0033,
+  taxRate: 0.0036,
   taxTotalToThisBracket: 0,
 };
 const iowaSecondBracket: TaxBracket = {
-  minimumToQualify: 1666,
-  taxRate: 0.0067,
+  minimumToQualify: 1540,
+  taxRate: 0.0072,
   taxTotalToThisBracket: (
     iowaFirstBracket.taxTotalToThisBracket
-          + (1665 - iowaFirstBracket.minimumToQualify) * iowaFirstBracket.taxRate
+          + (1539 - iowaFirstBracket.minimumToQualify) * iowaFirstBracket.taxRate
   ),
 };
 const iowaThirdBracket: TaxBracket = {
-  minimumToQualify: 3332,
-  taxRate: 0.0225,
+  minimumToQualify: 3079,
+  taxRate: 0.0243,
   taxTotalToThisBracket: (
     iowaSecondBracket.taxTotalToThisBracket
           + (3331 - iowaSecondBracket.minimumToQualify) * iowaSecondBracket.taxRate
   ),
 };
 const iowaFourthBracket: TaxBracket = {
-  minimumToQualify: 6664,
-  taxRate: 0.0414,
+  minimumToQualify: 6157,
+  taxRate: 0.045,
   taxTotalToThisBracket: (
     iowaThirdBracket.taxTotalToThisBracket
-          + (6663 - iowaThirdBracket.minimumToQualify) * iowaThirdBracket.taxRate
+          + (6156 - iowaThirdBracket.minimumToQualify) * iowaThirdBracket.taxRate
   ),
 };
 const iowaFifthBracket: TaxBracket = {
-  minimumToQualify: 14994,
-  taxRate: 0.0563,
+  minimumToQualify: 13852,
+  taxRate: 0.0612,
   taxTotalToThisBracket: (
     iowaFourthBracket.taxTotalToThisBracket
-          + (14993 - iowaFourthBracket.minimumToQualify) * iowaFourthBracket.taxRate
+          + (13851 - iowaFourthBracket.minimumToQualify) * iowaFourthBracket.taxRate
   ),
 };
 const iowaSixthBracket: TaxBracket = {
-  minimumToQualify: 24990,
-  taxRate: 0.0596,
+  minimumToQualify: 23086,
+  taxRate: 0.0648,
   taxTotalToThisBracket: (
     iowaFifthBracket.taxTotalToThisBracket
-          + (24989 - iowaFifthBracket.minimumToQualify) * iowaFifthBracket.taxRate
+          + (23085 - iowaFifthBracket.minimumToQualify) * iowaFifthBracket.taxRate
   ),
 };
 const iowaSeventhBracket: TaxBracket = {
-  minimumToQualify: 33320,
-  taxRate: 0.0625,
+  minimumToQualify: 30781,
+  taxRate: 0.0680,
   taxTotalToThisBracket: (
     iowaSixthBracket.taxTotalToThisBracket
-          + (33319 - iowaSixthBracket.minimumToQualify) * iowaSixthBracket.taxRate
+          + (30780 - iowaSixthBracket.minimumToQualify) * iowaSixthBracket.taxRate
   ),
 };
 const iowaEighthBracket: TaxBracket = {
-  minimumToQualify: 49980,
-  taxRate: 0.0744,
+  minimumToQualify: 46171,
+  taxRate: 0.0792,
   taxTotalToThisBracket: (
     iowaSeventhBracket.taxTotalToThisBracket
-          + (49979 - iowaSeventhBracket.minimumToQualify) * iowaSeventhBracket.taxRate
+          + (46170 - iowaSeventhBracket.minimumToQualify) * iowaSeventhBracket.taxRate
   ),
 };
 const iowaNinthBracket: TaxBracket = {
-  minimumToQualify: 74971,
-  taxRate: 0.0853,
+  minimumToQualify: 69256,
+  taxRate: 0.0898,
   taxTotalToThisBracket: (
     iowaEighthBracket.taxTotalToThisBracket
-          + (74970 - iowaEighthBracket.minimumToQualify) * iowaEighthBracket.taxRate
+          + (69255 - iowaEighthBracket.minimumToQualify) * iowaEighthBracket.taxRate
   ),
 };
 
