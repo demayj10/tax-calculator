@@ -9,37 +9,55 @@ const minnesotaFirstBracket: TaxBracket = {
 const minnesotaSingleSecondBracket: TaxBracket = {
   minimumToQualify: 27231,
   taxRate: 0.0680,
-  taxTotalToThisBracket: 1456.805,
+  taxTotalToThisBracket: (
+    minnesotaFirstBracket.taxTotalToThisBracket
+          + (27230 - minnesotaFirstBracket.minimumToQualify) * minnesotaFirstBracket.taxRate
+  ),
 };
 
 const minnesotaSingleThirdBracket: TaxBracket = {
   minimumToQualify: 89441,
   taxRate: 0.0785,
-  taxTotalToThisBracket: 5687.017,
+  taxTotalToThisBracket: (
+    minnesotaSingleSecondBracket.taxTotalToThisBracket
+          + (89440 - minnesotaSingleSecondBracket.minimumToQualify) * minnesotaSingleSecondBracket.taxRate
+  ),
 };
 
 const minnesotaSingleFourthBracket: TaxBracket = {
   minimumToQualify: 166041,
   taxRate: 0.0985,
-  taxTotalToThisBracket: 11700.0385,
+  taxTotalToThisBracket: (
+    minnesotaSingleThirdBracket.taxTotalToThisBracket
+          + (166040 - minnesotaSingleThirdBracket.minimumToQualify) * minnesotaSingleThirdBracket.taxRate
+  ),
 };
 
 const minnesotaMarriedSecondBracket: TaxBracket = {
   minimumToQualify: 39811,
   taxRate: 0.0680,
-  taxTotalToThisBracket: 2129.835,
+  taxTotalToThisBracket: (
+    minnesotaFirstBracket.taxTotalToThisBracket
+          + (39810 - minnesotaFirstBracket.minimumToQualify) * minnesotaFirstBracket.taxRate
+  ),
 };
 
 const minnesotaMarriedThirdBracket: TaxBracket = {
   minimumToQualify: 158141,
   taxRate: 0.0785,
-  taxTotalToThisBracket: 10176.207,
+  taxTotalToThisBracket: (
+    minnesotaMarriedSecondBracket.taxTotalToThisBracket
+          + (158140 - minnesotaMarriedSecondBracket.minimumToQualify) * minnesotaMarriedSecondBracket.taxRate
+  ),
 };
 
 const minnesotaMarriedFourthBracket: TaxBracket = {
   minimumToQualify: 276201,
   taxRate: 0.0985,
-  taxTotalToThisBracket: 19443.8385,
+  taxTotalToThisBracket: (
+    minnesotaMarriedThirdBracket.taxTotalToThisBracket
+          + (276200 - minnesotaMarriedThirdBracket.minimumToQualify) * minnesotaMarriedThirdBracket.taxRate
+  ),
 };
 
 export const minnesotaSingleIncomeTaxBracketsArray: TaxBracket[] = [

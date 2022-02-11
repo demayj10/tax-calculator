@@ -9,19 +9,28 @@ const arkansasFirstBracket: TaxBracket = {
 const arkansasSecondBracket: TaxBracket = {
   minimumToQualify: 4000,
   taxRate: 0.04,
-  taxTotalToThisBracket: 80,
+  taxTotalToThisBracket: (
+    arkansasFirstBracket.taxTotalToThisBracket
+          + (3999 - arkansasFirstBracket.minimumToQualify) * arkansasFirstBracket.taxRate
+  ),
 };
 
 const arkansasThirdBracket: TaxBracket = {
   minimumToQualify: 8000,
   taxRate: 0.059,
-  taxTotalToThisBracket: 240,
+  taxTotalToThisBracket: (
+    arkansasSecondBracket.taxTotalToThisBracket
+          + (7999 - arkansasSecondBracket.minimumToQualify) * arkansasSecondBracket.taxRate
+  ),
 };
 
 const arkansasFourthBracket: TaxBracket = {
   minimumToQualify: 79300,
   taxRate: 0.066,
-  taxTotalToThisBracket: 4446.70,
+  taxTotalToThisBracket: (
+    arkansasThirdBracket.taxTotalToThisBracket
+          + (79299 - arkansasThirdBracket.minimumToQualify) * arkansasThirdBracket.taxRate
+  ),
 };
 
 export const arkansasIncomeTaxBracketsArray: TaxBracket[] = [

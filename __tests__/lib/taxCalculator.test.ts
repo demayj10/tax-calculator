@@ -133,7 +133,7 @@ describe('test generateTaxReport', () => {
       minimumToQualify: expectedStateBracketMinimumToQualify,
       taxRate: expectedStateBracketTaxRate,
       taxTotalToThisBracket: expectedStateBracketTaxTotalToThisBracket,
-    } = ohioIncomeTaxBracketsObject.seventhBracket;
+    } = ohioIncomeTaxBracketsObject.ohioSeventhBracket;
 
     const stateTaxAmountInTopBracket = (
       adjustedAnnualIncome - expectedStateBracketMinimumToQualify

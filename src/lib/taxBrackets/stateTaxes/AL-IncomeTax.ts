@@ -9,25 +9,37 @@ const alabamaFirstBracket: TaxBracket = {
 const alabamaSingleSecondBracket: TaxBracket = {
   minimumToQualify: 500,
   taxRate: 0.04,
-  taxTotalToThisBracket: 10,
+  taxTotalToThisBracket: (
+    alabamaFirstBracket.taxTotalToThisBracket
+          + (499 - alabamaFirstBracket.minimumToQualify) * alabamaFirstBracket.taxRate
+  ),
 };
 
 const alabamaSingleThirdBracket: TaxBracket = {
   minimumToQualify: 3000,
   taxRate: 0.05,
-  taxTotalToThisBracket: 110,
+  taxTotalToThisBracket: (
+    alabamaSingleSecondBracket.taxTotalToThisBracket
+          + (2999 - alabamaSingleSecondBracket.minimumToQualify) * alabamaSingleSecondBracket.taxRate
+  ),
 };
 
 const alabamaMarriedSecondBracket: TaxBracket = {
   minimumToQualify: 1000,
   taxRate: 0.04,
-  taxTotalToThisBracket: 20,
+  taxTotalToThisBracket: (
+    alabamaFirstBracket.taxTotalToThisBracket
+          + (999 - alabamaFirstBracket.minimumToQualify) * alabamaFirstBracket.taxRate
+  ),
 };
 
 const alabamaMarriedThirdBracket: TaxBracket = {
   minimumToQualify: 6000,
   taxRate: 0.05,
-  taxTotalToThisBracket: 220,
+  taxTotalToThisBracket: (
+    alabamaMarriedSecondBracket.taxTotalToThisBracket
+          + (5999 - alabamaMarriedSecondBracket.minimumToQualify) * alabamaMarriedSecondBracket.taxRate
+  ),
 };
 
 export const alabamaSingleIncomeTaxBracketsArray: TaxBracket[] = [

@@ -9,25 +9,37 @@ const kansasFirstBracket: TaxBracket = {
 const kansasSingleSecondBracket: TaxBracket = {
   minimumToQualify: 15001,
   taxRate: 0.0525,
-  taxTotalToThisBracket: 465,
+  taxTotalToThisBracket: (
+    kansasFirstBracket.taxTotalToThisBracket
+          + (15000 - kansasFirstBracket.minimumToQualify) * kansasFirstBracket.taxRate
+  ),
 };
 
 const kansasSingleThirdBracket: TaxBracket = {
   minimumToQualify: 30001,
   taxRate: 0.0570,
-  taxTotalToThisBracket: 2039.9475,
+  taxTotalToThisBracket: (
+    kansasSingleSecondBracket.taxTotalToThisBracket
+          + (30000 - kansasSingleSecondBracket.minimumToQualify) * kansasSingleSecondBracket.taxRate
+  ),
 };
 
 const kansasMarriedSecondBracket: TaxBracket = {
   minimumToQualify: 30001,
   taxRate: 0.0525,
-  taxTotalToThisBracket: 930,
+  taxTotalToThisBracket: (
+    kansasFirstBracket.taxTotalToThisBracket
+          + (30000 - kansasFirstBracket.minimumToQualify) * kansasFirstBracket.taxRate
+  ),
 };
 
 const kansasMarriedThirdBracket: TaxBracket = {
   minimumToQualify: 60001,
   taxRate: 0.0570,
-  taxTotalToThisBracket: 2504.9475,
+  taxTotalToThisBracket: (
+    kansasMarriedSecondBracket.taxTotalToThisBracket
+          + (60000 - kansasMarriedSecondBracket.minimumToQualify) * kansasMarriedSecondBracket.taxRate
+  ),
 };
 
 export const kansasSingleIncomeTaxBracketsArray: TaxBracket[] = [
