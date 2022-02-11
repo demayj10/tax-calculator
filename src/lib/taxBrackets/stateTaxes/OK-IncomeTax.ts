@@ -7,63 +7,111 @@ const oklahomaFirstBracket: TaxBracket = {
 };
 
 const oklahomaSingleSecondBracket: TaxBracket = {
-  minimumToQualify: 1000,
+  minimumToQualify: 1001,
   taxRate: 0.01,
-  taxTotalToThisBracket: 5,
+  taxTotalToThisBracket: (
+    oklahomaFirstBracket.taxTotalToThisBracket
+          + (1000 - oklahomaFirstBracket.minimumToQualify) * oklahomaFirstBracket.taxRate
+  ),
 };
 
 const oklahomaSingleThirdBracket: TaxBracket = {
-  minimumToQualify: 2500,
+  minimumToQualify: 2501,
   taxRate: 0.02,
-  taxTotalToThisBracket: 20,
+  taxTotalToThisBracket: (
+    oklahomaSingleSecondBracket.taxTotalToThisBracket
+          + (2500 - oklahomaSingleSecondBracket.minimumToQualify) * oklahomaSingleSecondBracket.taxRate
+  ),
 };
 
 const oklahomaSingleFourthBracket: TaxBracket = {
-  minimumToQualify: 3750,
+  minimumToQualify: 3751,
   taxRate: 0.03,
-  taxTotalToThisBracket: 45,
+  taxTotalToThisBracket: (
+    oklahomaSingleThirdBracket.taxTotalToThisBracket
+          + (3750 - oklahomaSingleThirdBracket.minimumToQualify) * oklahomaSingleThirdBracket.taxRate
+  ),
 };
 
 const oklahomaSingleFifthBracket: TaxBracket = {
-  minimumToQualify: 4900,
+  minimumToQualify: 4901,
   taxRate: 0.04,
-  taxTotalToThisBracket: 79.5,
+  taxTotalToThisBracket: (
+    oklahomaSingleFourthBracket.taxTotalToThisBracket
+          + (4900 - oklahomaSingleFourthBracket.minimumToQualify) * oklahomaSingleFourthBracket.taxRate
+  ),
 };
 
 const oklahomaSingleSixthBracket: TaxBracket = {
-  minimumToQualify: 7200,
+  minimumToQualify: 7201,
   taxRate: 0.05,
-  taxTotalToThisBracket: 171.5,
+  taxTotalToThisBracket: (
+    oklahomaSingleFifthBracket.taxTotalToThisBracket
+          + (7200 - oklahomaSingleFifthBracket.minimumToQualify) * oklahomaSingleFifthBracket.taxRate
+  ),
+};
+
+const oklahomaSingleSeventhBracket: TaxBracket = {
+  minimumToQualify: 8701,
+  taxRate: 0.0525,
+  taxTotalToThisBracket: (
+    oklahomaSingleSixthBracket.taxTotalToThisBracket
+          + (8700 - oklahomaSingleSixthBracket.minimumToQualify) * oklahomaSingleSixthBracket.taxRate
+  ),
 };
 
 const oklahomaMarriedSecondBracket: TaxBracket = {
-  minimumToQualify: 2000,
+  minimumToQualify: 2001,
   taxRate: 0.01,
-  taxTotalToThisBracket: 10,
+  taxTotalToThisBracket: (
+    oklahomaFirstBracket.taxTotalToThisBracket
+          + (2000 - oklahomaFirstBracket.minimumToQualify) * oklahomaFirstBracket.taxRate
+  ),
 };
 
 const oklahomaMarriedThirdBracket: TaxBracket = {
-  minimumToQualify: 5000,
+  minimumToQualify: 5001,
   taxRate: 0.02,
-  taxTotalToThisBracket: 40,
+  taxTotalToThisBracket: (
+    oklahomaMarriedSecondBracket.taxTotalToThisBracket
+          + (5000 - oklahomaMarriedSecondBracket.minimumToQualify) * oklahomaMarriedSecondBracket.taxRate
+  ),
 };
 
 const oklahomaMarriedFourthBracket: TaxBracket = {
-  minimumToQualify: 7500,
+  minimumToQualify: 7501,
   taxRate: 0.03,
-  taxTotalToThisBracket: 90,
+  taxTotalToThisBracket: (
+    oklahomaMarriedThirdBracket.taxTotalToThisBracket
+          + (7500 - oklahomaMarriedThirdBracket.minimumToQualify) * oklahomaMarriedThirdBracket.taxRate
+  ),
 };
 
 const oklahomaMarriedFifthBracket: TaxBracket = {
-  minimumToQualify: 9800,
+  minimumToQualify: 9801,
   taxRate: 0.04,
-  taxTotalToThisBracket: 159,
+  taxTotalToThisBracket: (
+    oklahomaMarriedFourthBracket.taxTotalToThisBracket
+          + (9800 - oklahomaMarriedFourthBracket.minimumToQualify) * oklahomaMarriedFourthBracket.taxRate
+  ),
 };
 
 const oklahomaMarriedSixthBracket: TaxBracket = {
-  minimumToQualify: 12200,
+  minimumToQualify: 12201,
   taxRate: 0.05,
-  taxTotalToThisBracket: 255,
+  taxTotalToThisBracket: (
+    oklahomaMarriedFifthBracket.taxTotalToThisBracket
+          + (12200 - oklahomaMarriedFifthBracket.minimumToQualify) * oklahomaMarriedFifthBracket.taxRate
+  ),
+};
+
+const oklahomaMarriedSeventhBracket: TaxBracket = {
+  minimumToQualify: 15001,
+  taxRate: 0.0525,
+  taxTotalToThisBracket: (
+    oklahomaMarriedSixthBracket.taxTotalToThisBracket
+          + (15000 - oklahomaMarriedSixthBracket.minimumToQualify) * oklahomaMarriedSixthBracket.taxRate
+  ),
 };
 
 export const oklahomaSingleIncomeTaxBracketsArray: TaxBracket[] = [
@@ -73,6 +121,7 @@ export const oklahomaSingleIncomeTaxBracketsArray: TaxBracket[] = [
   oklahomaSingleFourthBracket,
   oklahomaSingleFifthBracket,
   oklahomaSingleSixthBracket,
+  oklahomaSingleSeventhBracket,
 ];
 
 export const oklahomaSingleIncomeTaxBracketsObject = {
@@ -82,6 +131,7 @@ export const oklahomaSingleIncomeTaxBracketsObject = {
   oklahomaSingleFourthBracket,
   oklahomaSingleFifthBracket,
   oklahomaSingleSixthBracket,
+  oklahomaSingleSeventhBracket,
 };
 
 export const oklahomaMarriedIncomeTaxBracketsArray: TaxBracket[] = [
@@ -91,6 +141,7 @@ export const oklahomaMarriedIncomeTaxBracketsArray: TaxBracket[] = [
   oklahomaMarriedFourthBracket,
   oklahomaMarriedFifthBracket,
   oklahomaMarriedSixthBracket,
+  oklahomaMarriedSeventhBracket,
 ];
 
 export const oklahomaMarriedIncomeTaxBracketsObject = {
@@ -100,4 +151,5 @@ export const oklahomaMarriedIncomeTaxBracketsObject = {
   oklahomaMarriedFourthBracket,
   oklahomaMarriedFifthBracket,
   oklahomaMarriedSixthBracket,
+  oklahomaMarriedSeventhBracket,
 };

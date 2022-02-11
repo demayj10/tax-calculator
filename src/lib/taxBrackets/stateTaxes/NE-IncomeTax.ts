@@ -9,37 +9,55 @@ const nebraskaFirstBracket: TaxBracket = {
 const nebraskaSingleSecondBracket: TaxBracket = {
   minimumToQualify: 3051,
   taxRate: 0.0351,
-  taxTotalToThisBracket: 75.03,
+  taxTotalToThisBracket: (
+    nebraskaFirstBracket.taxTotalToThisBracket
+          + (3050 - nebraskaFirstBracket.minimumToQualify) * nebraskaFirstBracket.taxRate
+  ),
 };
 
 const nebraskaSingleThirdBracket: TaxBracket = {
   minimumToQualify: 18281,
   taxRate: 0.0501,
-  taxTotalToThisBracket: 609.5679,
+  taxTotalToThisBracket: (
+    nebraskaSingleSecondBracket.taxTotalToThisBracket
+          + (18280 - nebraskaSingleSecondBracket.minimumToQualify) * nebraskaSingleSecondBracket.taxRate
+  ),
 };
 
 const nebraskaSingleFourthBracket: TaxBracket = {
   minimumToQualify: 29461,
   taxRate: 0.0684,
-  taxTotalToThisBracket: 1169.6358,
+  taxTotalToThisBracket: (
+    nebraskaSingleThirdBracket.taxTotalToThisBracket
+          + (29460 - nebraskaSingleThirdBracket.minimumToQualify) * nebraskaSingleThirdBracket.taxRate
+  ),
 };
 
 const nebraskaMarriedSecondBracket: TaxBracket = {
   minimumToQualify: 6091,
   taxRate: 0.0351,
-  taxTotalToThisBracket: 149.814,
+  taxTotalToThisBracket: (
+    nebraskaFirstBracket.taxTotalToThisBracket
+          + (6090 - nebraskaFirstBracket.minimumToQualify) * nebraskaFirstBracket.taxRate
+  ),
 };
 
 const nebraskaMarriedThirdBracket: TaxBracket = {
   minimumToQualify: 36571,
   taxRate: 0.0501,
-  taxTotalToThisBracket: 1219.6269,
+  taxTotalToThisBracket: (
+    nebraskaMarriedSecondBracket.taxTotalToThisBracket
+          + (36570 - nebraskaMarriedSecondBracket.minimumToQualify) * nebraskaMarriedSecondBracket.taxRate
+  ),
 };
 
 const nebraskaMarriedFourthBracket: TaxBracket = {
   minimumToQualify: 58921,
   taxRate: 0.0684,
-  taxTotalToThisBracket: 2339.3118,
+  taxTotalToThisBracket: (
+    nebraskaMarriedThirdBracket.taxTotalToThisBracket
+          + (58920 - nebraskaMarriedThirdBracket.minimumToQualify) * nebraskaMarriedThirdBracket.taxRate
+  ),
 };
 
 export const nebraskaSingleIncomeTaxBracketsArray: TaxBracket[] = [

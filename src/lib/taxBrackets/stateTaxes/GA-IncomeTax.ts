@@ -7,63 +7,93 @@ const georgiaFirstBracket: TaxBracket = {
 };
 
 const georgiaSingleSecondBracket: TaxBracket = {
-  minimumToQualify: 750,
+  minimumToQualify: 751,
   taxRate: 0.02,
-  taxTotalToThisBracket: 7.50,
+  taxTotalToThisBracket: (
+    georgiaFirstBracket.taxTotalToThisBracket
+          + (750 - georgiaFirstBracket.minimumToQualify) * georgiaFirstBracket.taxRate
+  ),
 };
 
 const georgiaSingleThirdBracket: TaxBracket = {
-  minimumToQualify: 2250,
+  minimumToQualify: 2251,
   taxRate: 0.03,
-  taxTotalToThisBracket: 37.50,
+  taxTotalToThisBracket: (
+    georgiaSingleSecondBracket.taxTotalToThisBracket
+          + (2250 - georgiaSingleSecondBracket.minimumToQualify) * georgiaSingleSecondBracket.taxRate
+  ),
 };
 
 const georgiaSingleFourthBracket: TaxBracket = {
-  minimumToQualify: 3750,
+  minimumToQualify: 3751,
   taxRate: 0.04,
-  taxTotalToThisBracket: 82.50,
+  taxTotalToThisBracket: (
+    georgiaSingleThirdBracket.taxTotalToThisBracket
+          + (3750 - georgiaSingleThirdBracket.minimumToQualify) * georgiaSingleThirdBracket.taxRate
+  ),
 };
 
 const georgiaSingleFifthBracket: TaxBracket = {
-  minimumToQualify: 5250,
+  minimumToQualify: 5251,
   taxRate: 0.05,
-  taxTotalToThisBracket: 142.50,
+  taxTotalToThisBracket: (
+    georgiaSingleFourthBracket.taxTotalToThisBracket
+          + (5250 - georgiaSingleFourthBracket.minimumToQualify) * georgiaSingleFourthBracket.taxRate
+  ),
 };
 
 const georgiaSingleSixthBracket: TaxBracket = {
-  minimumToQualify: 7000,
+  minimumToQualify: 7001,
   taxRate: 0.0575,
-  taxTotalToThisBracket: 230,
+  taxTotalToThisBracket: (
+    georgiaSingleFifthBracket.taxTotalToThisBracket
+          + (7000 - georgiaSingleFifthBracket.minimumToQualify) * georgiaSingleFifthBracket.taxRate
+  ),
 };
 
 const georgiaMarriedSecondBracket: TaxBracket = {
-  minimumToQualify: 1000,
+  minimumToQualify: 1001,
   taxRate: 0.02,
-  taxTotalToThisBracket: 20,
+  taxTotalToThisBracket: (
+    georgiaFirstBracket.taxTotalToThisBracket
+          + (1000 - georgiaFirstBracket.minimumToQualify) * georgiaFirstBracket.taxRate
+  ),
 };
 
 const georgiaMarriedThirdBracket: TaxBracket = {
-  minimumToQualify: 3000,
+  minimumToQualify: 3001,
   taxRate: 0.03,
-  taxTotalToThisBracket: 60,
+  taxTotalToThisBracket: (
+    georgiaMarriedSecondBracket.taxTotalToThisBracket
+          + (3000 - georgiaMarriedSecondBracket.minimumToQualify) * georgiaMarriedSecondBracket.taxRate
+  ),
 };
 
 const georgiaMarriedFourthBracket: TaxBracket = {
-  minimumToQualify: 5000,
+  minimumToQualify: 5001,
   taxRate: 0.04,
-  taxTotalToThisBracket: 120,
+  taxTotalToThisBracket: (
+    georgiaMarriedThirdBracket.taxTotalToThisBracket
+          + (5000 - georgiaMarriedThirdBracket.minimumToQualify) * georgiaMarriedThirdBracket.taxRate
+  ),
 };
 
 const georgiaMarriedFifthBracket: TaxBracket = {
-  minimumToQualify: 7000,
+  minimumToQualify: 7001,
   taxRate: 0.05,
-  taxTotalToThisBracket: 200,
+  taxTotalToThisBracket: (
+    georgiaMarriedFourthBracket.taxTotalToThisBracket
+          + (7000 - georgiaMarriedFourthBracket.minimumToQualify) * georgiaMarriedFourthBracket.taxRate
+  ),
 };
 
 const georgiaMarriedSixthBracket: TaxBracket = {
-  minimumToQualify: 10000,
+  minimumToQualify: 10001,
   taxRate: 0.0575,
-  taxTotalToThisBracket: 350,
+  taxTotalToThisBracket: (
+    georgiaMarriedFifthBracket.taxTotalToThisBracket
+          + (10000 - georgiaMarriedFifthBracket.minimumToQualify) * georgiaMarriedFifthBracket.taxRate
+  ),
 };
 
 export const georgiaSingleIncomeTaxBracketsArray: TaxBracket[] = [

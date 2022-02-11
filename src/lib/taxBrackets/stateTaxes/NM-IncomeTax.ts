@@ -9,55 +9,84 @@ const newMexicoFirstBracket: TaxBracket = {
 const newMexicoSingleSecondBracket: TaxBracket = {
   minimumToQualify: 5501,
   taxRate: 0.032,
-  taxTotalToThisBracket: 93.50,
+  taxTotalToThisBracket: (
+    newMexicoFirstBracket.taxTotalToThisBracket
+          + (5500 - newMexicoFirstBracket.minimumToQualify) * newMexicoFirstBracket.taxRate
+  ),
 };
 
 const newMexicoSingleThirdBracket: TaxBracket = {
   minimumToQualify: 11001,
   taxRate: 0.047,
-  taxTotalToThisBracket: 269.468,
+  taxTotalToThisBracket: (
+    newMexicoSingleSecondBracket.taxTotalToThisBracket
+          + (11000 - newMexicoSingleSecondBracket.minimumToQualify) * newMexicoSingleSecondBracket.taxRate
+  ),
 };
 
 const newMexicoSingleFourthBracket: TaxBracket = {
   minimumToQualify: 16001,
   taxRate: 0.049,
-  taxTotalToThisBracket: 504.421,
+  taxTotalToThisBracket: (
+    newMexicoSingleThirdBracket.taxTotalToThisBracket
+          + (16000 - newMexicoSingleThirdBracket.minimumToQualify) * newMexicoSingleThirdBracket.taxRate
+  ),
 };
 
 const newMexicoMarriedSecondBracket: TaxBracket = {
   minimumToQualify: 8001,
   taxRate: 0.032,
-  taxTotalToThisBracket: 136,
+  taxTotalToThisBracket: (
+    newMexicoFirstBracket.taxTotalToThisBracket
+          + (8000 - newMexicoFirstBracket.minimumToQualify) * newMexicoFirstBracket.taxRate
+  ),
 };
 
 const newMexicoMarriedThirdBracket: TaxBracket = {
   minimumToQualify: 16001,
   taxRate: 0.047,
-  taxTotalToThisBracket: 391.968,
+  taxTotalToThisBracket: (
+    newMexicoMarriedSecondBracket.taxTotalToThisBracket
+          + (16000 - newMexicoMarriedSecondBracket.minimumToQualify) * newMexicoMarriedSecondBracket.taxRate
+  ),
 };
 
 const newMexicoMarriedFourthBracket: TaxBracket = {
   minimumToQualify: 24001,
   taxRate: 0.049,
-  taxTotalToThisBracket: 767.921,
+  taxTotalToThisBracket: (
+    newMexicoMarriedThirdBracket.taxTotalToThisBracket
+          + (24000 - newMexicoMarriedThirdBracket.minimumToQualify) * newMexicoMarriedThirdBracket.taxRate
+  ),
 };
 
 const newMexicoMarriedFilingSeparatelySecondBracket: TaxBracket = {
   minimumToQualify: 4001,
   taxRate: 0.032,
-  taxTotalToThisBracket: 68,
+  taxTotalToThisBracket: (
+    newMexicoFirstBracket.taxTotalToThisBracket
+          + (4000 - newMexicoFirstBracket.minimumToQualify) * newMexicoFirstBracket.taxRate
+  ),
 };
 
 const newMexicoMarriedFilingSeparatelyThirdBracket: TaxBracket = {
   minimumToQualify: 8001,
   taxRate: 0.047,
-  taxTotalToThisBracket: 195.968,
+  taxTotalToThisBracket: (
+    newMexicoMarriedFilingSeparatelySecondBracket.taxTotalToThisBracket
+          + (8000 - newMexicoMarriedFilingSeparatelySecondBracket.minimumToQualify)
+            * newMexicoMarriedFilingSeparatelySecondBracket.taxRate
+  ),
 };
 
 const newMexicoMarriedFilingSeparatelyFourthBracket: TaxBracket = {
   minimumToQualify: 12001,
   taxRate: 0.049,
-  taxTotalToThisBracket: 383.921,
+  taxTotalToThisBracket: (
+    newMexicoMarriedFilingSeparatelyThirdBracket.taxTotalToThisBracket
+          + (12000 - newMexicoMarriedFilingSeparatelyThirdBracket.minimumToQualify)
+            * newMexicoMarriedFilingSeparatelyThirdBracket.taxRate
+  ),
 };
 
 export const newMexicoSingleIncomeTaxBracketsArray: TaxBracket[] = [

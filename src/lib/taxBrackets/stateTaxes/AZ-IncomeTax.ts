@@ -7,51 +7,57 @@ const arizonaFirstBracket: TaxBracket = {
 };
 
 const arizonaSingleSecondBracket: TaxBracket = {
-  minimumToQualify: 27809,
+  minimumToQualify: 27273,
   taxRate: 0.0334,
-  taxTotalToThisBracket: 720,
+  taxTotalToThisBracket: (
+    arizonaFirstBracket.taxTotalToThisBracket
+          + (27272 - arizonaFirstBracket.minimumToQualify) * arizonaFirstBracket.taxRate
+  ),
 };
 
 const arizonaSingleThirdBracket: TaxBracket = {
-  minimumToQualify: 55616,
+  minimumToQualify: 54545,
   taxRate: 0.0417,
-  taxTotalToThisBracket: 1649,
+  taxTotalToThisBracket: (
+    arizonaSingleSecondBracket.taxTotalToThisBracket
+          + (54544 - arizonaSingleSecondBracket.minimumToQualify) * arizonaSingleSecondBracket.taxRate
+  ),
 };
 
 const arizonaSingleFourthBracket: TaxBracket = {
-  minimumToQualify: 166844,
+  minimumToQualify: 163633,
   taxRate: 0.045,
-  taxTotalToThisBracket: 6287,
-};
-
-const arizonaSingleFifthBracket: TaxBracket = {
-  minimumToQualify: 250001,
-  taxRate: 0.01,
-  taxTotalToThisBracket: 10029,
+  taxTotalToThisBracket: (
+    arizonaSingleThirdBracket.taxTotalToThisBracket
+          + (163632 - arizonaSingleThirdBracket.minimumToQualify) * arizonaSingleThirdBracket.taxRate
+  ),
 };
 
 const arizonaMarriedSecondBracket: TaxBracket = {
-  minimumToQualify: 55616,
+  minimumToQualify: 54545,
   taxRate: 0.0334,
-  taxTotalToThisBracket: 1440,
+  taxTotalToThisBracket: (
+    arizonaFirstBracket.taxTotalToThisBracket
+          + (54544 - arizonaFirstBracket.minimumToQualify) * arizonaFirstBracket.taxRate
+  ),
 };
 
 const arizonaMarriedThirdBracket: TaxBracket = {
-  minimumToQualify: 111230,
+  minimumToQualify: 109089,
   taxRate: 0.0417,
-  taxTotalToThisBracket: 3298,
+  taxTotalToThisBracket: (
+    arizonaMarriedSecondBracket.taxTotalToThisBracket
+          + (109088 - arizonaMarriedSecondBracket.minimumToQualify) * arizonaMarriedSecondBracket.taxRate
+  ),
 };
 
 const arizonaMarriedFourthBracket: TaxBracket = {
-  minimumToQualify: 333685,
+  minimumToQualify: 327264,
   taxRate: 0.045,
-  taxTotalToThisBracket: 12574,
-};
-
-const arizonaMarriedFifthBracket: TaxBracket = {
-  minimumToQualify: 500001,
-  taxRate: 0.01,
-  taxTotalToThisBracket: 20059,
+  taxTotalToThisBracket: (
+    arizonaMarriedThirdBracket.taxTotalToThisBracket
+          + (327263 - arizonaMarriedThirdBracket.minimumToQualify) * arizonaMarriedThirdBracket.taxRate
+  ),
 };
 
 export const arizonaSingleIncomeTaxBracketsArray: TaxBracket[] = [
@@ -59,7 +65,6 @@ export const arizonaSingleIncomeTaxBracketsArray: TaxBracket[] = [
   arizonaSingleSecondBracket,
   arizonaSingleThirdBracket,
   arizonaSingleFourthBracket,
-  arizonaSingleFifthBracket,
 ];
 
 export const arizonaSingleIncomeTaxBracketsObject = {
@@ -67,7 +72,6 @@ export const arizonaSingleIncomeTaxBracketsObject = {
   arizonaSingleSecondBracket,
   arizonaSingleThirdBracket,
   arizonaSingleFourthBracket,
-  arizonaSingleFifthBracket,
 };
 
 export const arizonaMarriedIncomeTaxBracketsArray: TaxBracket[] = [
@@ -75,7 +79,6 @@ export const arizonaMarriedIncomeTaxBracketsArray: TaxBracket[] = [
   arizonaMarriedSecondBracket,
   arizonaMarriedThirdBracket,
   arizonaMarriedFourthBracket,
-  arizonaMarriedFifthBracket,
 ];
 
 export const arizonaMarriedIncomeTaxBracketsObject = {
@@ -83,5 +86,4 @@ export const arizonaMarriedIncomeTaxBracketsObject = {
   arizonaMarriedSecondBracket,
   arizonaMarriedThirdBracket,
   arizonaMarriedFourthBracket,
-  arizonaMarriedFifthBracket,
 };

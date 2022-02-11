@@ -7,33 +7,48 @@ const southCarolinaFirstBracket: TaxBracket = {
 };
 
 const southCarolinaSecondBracket: TaxBracket = {
-  minimumToQualify: 3071,
+  minimumToQualify: 2971,
   taxRate: 0.03,
-  taxTotalToThisBracket: 0,
+  taxTotalToThisBracket: (
+    southCarolinaFirstBracket.taxTotalToThisBracket
+          + (2970 - southCarolinaFirstBracket.minimumToQualify) * southCarolinaFirstBracket.taxRate
+  ),
 };
 
 const southCarolinaThirdBracket: TaxBracket = {
-  minimumToQualify: 6151,
+  minimumToQualify: 5941,
   taxRate: 0.04,
-  taxTotalToThisBracket: 92.37,
+  taxTotalToThisBracket: (
+    southCarolinaSecondBracket.taxTotalToThisBracket
+          + (5940 - southCarolinaSecondBracket.minimumToQualify) * southCarolinaSecondBracket.taxRate
+  ),
 };
 
 const southCarolinaFourthBracket: TaxBracket = {
-  minimumToQualify: 9231,
+  minimumToQualify: 8911,
   taxRate: 0.05,
-  taxTotalToThisBracket: 215.53,
+  taxTotalToThisBracket: (
+    southCarolinaThirdBracket.taxTotalToThisBracket
+          + (8910 - southCarolinaThirdBracket.minimumToQualify) * southCarolinaThirdBracket.taxRate
+  ),
 };
 
 const southCarolinaFifthBracket: TaxBracket = {
-  minimumToQualify: 12311,
+  minimumToQualify: 11881,
   taxRate: 0.06,
-  taxTotalToThisBracket: 369.48,
+  taxTotalToThisBracket: (
+    southCarolinaFourthBracket.taxTotalToThisBracket
+          + (11880 - southCarolinaFourthBracket.minimumToQualify) * southCarolinaFourthBracket.taxRate
+  ),
 };
 
 const southCarolinaSixthBracket: TaxBracket = {
-  minimumToQualify: 15401,
+  minimumToQualify: 14861,
   taxRate: 0.07,
-  taxTotalToThisBracket: 554.82,
+  taxTotalToThisBracket: (
+    southCarolinaFifthBracket.taxTotalToThisBracket
+          + (14860 - southCarolinaFifthBracket.minimumToQualify) * southCarolinaFifthBracket.taxRate
+  ),
 };
 
 export const southCarolinaIncomeTaxBracketsArray: TaxBracket[] = [

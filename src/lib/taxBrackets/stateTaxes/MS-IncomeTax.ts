@@ -7,21 +7,30 @@ const mississippiZeroBracket: TaxBracket = {
 };
 
 const mississippiFirstBracket: TaxBracket = {
-  minimumToQualify: 1001,
+  minimumToQualify: 3001,
   taxRate: 0.03,
-  taxTotalToThisBracket: 0,
+  taxTotalToThisBracket: (
+    mississippiZeroBracket.taxTotalToThisBracket
+          + (3000 - mississippiZeroBracket.minimumToQualify) * mississippiZeroBracket.taxRate
+  ),
 };
 
 const mississippiSecondBracket: TaxBracket = {
   minimumToQualify: 5001,
   taxRate: 0.04,
-  taxTotalToThisBracket: 120,
+  taxTotalToThisBracket: (
+    mississippiFirstBracket.taxTotalToThisBracket
+          + (5000 - mississippiFirstBracket.minimumToQualify) * mississippiFirstBracket.taxRate
+  ),
 };
 
 const mississippiThirdBracket: TaxBracket = {
   minimumToQualify: 10001,
   taxRate: 0.05,
-  taxTotalToThisBracket: 320,
+  taxTotalToThisBracket: (
+    mississippiSecondBracket.taxTotalToThisBracket
+          + (10000 - mississippiSecondBracket.minimumToQualify) * mississippiSecondBracket.taxRate
+  ),
 };
 
 export const mississippiIncomeTaxBracketsArray: TaxBracket[] = [

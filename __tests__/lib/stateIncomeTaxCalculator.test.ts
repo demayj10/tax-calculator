@@ -243,7 +243,7 @@ describe('test findStateIncomeTaxBracket', () => {
     const annualIncome: number = ONE_HUNDRED_THOUSAND;
     const stateIncomeBrackets: TaxBracket[] = ohioIncomeTaxBracketsArray;
 
-    const expectedTaxBracket: TaxBracket = ohioIncomeTaxBracketsObject.seventhBracket;
+    const expectedTaxBracket: TaxBracket = ohioIncomeTaxBracketsObject.ohioSeventhBracket;
     const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, stateIncomeBrackets);
 
     expect(actualTaxBracket).toEqual(expectedTaxBracket);
@@ -267,7 +267,7 @@ describe('test calculateStateIncomeTax', () => {
 
   test('should return state tax amount for Ohio and income of $100,000', () => {
     const annualIncome: number = ONE_HUNDRED_THOUSAND;
-    const taxBracket: TaxBracket = ohioIncomeTaxBracketsObject.seventhBracket;
+    const taxBracket: TaxBracket = ohioIncomeTaxBracketsObject.ohioSeventhBracket;
     const { minimumToQualify, taxRate, taxTotalToThisBracket } = taxBracket;
 
     const expectedTaxAmount: number = (
@@ -504,7 +504,7 @@ describe('test Arkansas state income tax', () => {
 
     expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
 
-    const expectedTaxBracket: TaxBracket = arkansasIncomeTaxBracketsObject.arkansasFourthBracket;
+    const expectedTaxBracket: TaxBracket = arkansasIncomeTaxBracketsObject.arkansasSixthBracket;
     const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
     const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
 
@@ -532,7 +532,7 @@ describe('test Arkansas state income tax', () => {
 
     expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
 
-    const expectedTaxBracket: TaxBracket = arkansasIncomeTaxBracketsObject.arkansasFourthBracket;
+    const expectedTaxBracket: TaxBracket = arkansasIncomeTaxBracketsObject.arkansasSixthBracket;
     const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
     const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
 
@@ -1245,7 +1245,7 @@ describe('test Iowa state income tax', () => {
 
     expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
 
-    const expectedTaxBracket: TaxBracket = iowaIncomeTaxBracketsObject.ninthBracket;
+    const expectedTaxBracket: TaxBracket = iowaIncomeTaxBracketsObject.iowaNinthBracket;
     const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
     const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
 
@@ -2444,7 +2444,7 @@ describe('test Ohio state income tax', () => {
 
     expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
 
-    const expectedTaxBracket: TaxBracket = ohioIncomeTaxBracketsObject.seventhBracket;
+    const expectedTaxBracket: TaxBracket = ohioIncomeTaxBracketsObject.ohioSeventhBracket;
     const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
     const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
 
@@ -2499,7 +2499,7 @@ describe('test Oklahoma state income tax', () => {
 
     expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
 
-    const expectedTaxBracket: TaxBracket = oklahomaSingleIncomeTaxBracketsObject.oklahomaSingleSixthBracket;
+    const expectedTaxBracket: TaxBracket = oklahomaSingleIncomeTaxBracketsObject.oklahomaSingleSeventhBracket;
     const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
     const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
 
@@ -2527,7 +2527,7 @@ describe('test Oklahoma state income tax', () => {
 
     expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
 
-    const expectedTaxBracket: TaxBracket = oklahomaMarriedIncomeTaxBracketsObject.oklahomaMarriedSixthBracket;
+    const expectedTaxBracket: TaxBracket = oklahomaMarriedIncomeTaxBracketsObject.oklahomaMarriedSeventhBracket;
     const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
     const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
 
