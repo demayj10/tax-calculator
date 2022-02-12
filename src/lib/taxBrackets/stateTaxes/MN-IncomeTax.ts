@@ -87,3 +87,6 @@ export const minnesotaMarriedIncomeTaxBracketsObject = {
   minnesotaMarriedThirdBracket,
   minnesotaMarriedFourthBracket,
 };
+
+export const MINNESOTA_SINGLE_STANDARD_DEDUCTION = 12950;
+export const MINNESOTA_MARRIED_STANDARD_DEDUCTION = 25900;

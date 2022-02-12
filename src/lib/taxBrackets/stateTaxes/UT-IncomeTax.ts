@@ -13,3 +13,6 @@ export const utahIncomeTaxBracketsArray: TaxBracket[] = [
 export const utahIncomeTaxBracketsObject = {
   utahFirstBracket,
 };
+
+export const UTAH_SINGLE_STANDARD_DEDUCTION = 0;
+export const UTAH_MARRIED_STANDARD_DEDUCTION = 0;

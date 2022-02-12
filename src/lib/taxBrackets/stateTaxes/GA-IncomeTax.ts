@@ -131,3 +131,6 @@ export const georgiaMarriedIncomeTaxBracketsObject = {
   georgiaMarriedFifthBracket,
   georgiaMarriedSixthBracket,
 };
+
+export const GEORGIA_SINGLE_STANDARD_DEDUCTION = 5400;
+export const GEORGIA_MARRIED_STANDARD_DEDUCTION = 7100;

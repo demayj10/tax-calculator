@@ -13,3 +13,6 @@ export const indianaIncomeTaxBracketsArray: TaxBracket[] = [
 export const indianaIncomeTaxBracketsObject = {
   indianaTaxBracket,
 };
+
+export const INDIANA_SINGLE_STANDARD_DEDUCTION = 0;
+export const INDIANA_MARRIED_STANDARD_DEDUCTION = 0;

@@ -153,3 +153,6 @@ export const oklahomaMarriedIncomeTaxBracketsObject = {
   oklahomaMarriedSixthBracket,
   oklahomaMarriedSeventhBracket,
 };
+
+export const OKLAHOMA_SINGLE_STANDARD_DEDUCTION = 6350;
+export const OKLAHOMA_MARRIED_STANDARD_DEDUCTION = 12700;

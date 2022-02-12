@@ -87,3 +87,6 @@ export const nebraskaMarriedIncomeTaxBracketsObject = {
   nebraskaMarriedThirdBracket,
   nebraskaMarriedFourthBracket,
 };
+
+export const NEBRASKA_SINGLE_STANDARD_DEDUCTION = 7100;
+export const NEBRASKA_MARRIED_STANDARD_DEDUCTION = 14200;

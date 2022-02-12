@@ -90,3 +90,6 @@ export const newYorkIncomeTaxBracketsObject = {
   newYorkSeventhBracket,
   newYorkEighthBracket,
 };
+
+export const NEW_YORK_SINGLE_STANDARD_DEDUCTION = 8000;
+export const NEW_YORK_MARRIED_STANDARD_DEDUCTION = 16050;

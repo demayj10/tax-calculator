@@ -109,3 +109,6 @@ export const vermontMarriedIncomeTaxBracketsObject = {
   vermontMarriedFourthBracket,
   vermontMarriedFifthBracket,
 };
+
+export const VERMONT_SINGLE_STANDARD_DEDUCTION = 6350;
+export const VERMONT_MARRIED_STANDARD_DEDUCTION = 12700;

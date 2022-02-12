@@ -197,3 +197,6 @@ export const californiaMarriedIncomeTaxBracketsObject = {
   californiaMarriedEighthBracket,
   californiaMarriedNinthBracket,
 };
+
+export const CALIFORNIA_SINGLE_STANDARD_DEDUCTION = 4803;
+export const CALIFORNIA_MARRIED_STANDARD_DEDUCTION = 9606;

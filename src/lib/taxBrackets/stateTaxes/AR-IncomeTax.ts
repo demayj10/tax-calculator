@@ -68,3 +68,6 @@ export const arkansasIncomeTaxBracketsObject = {
   arkansasFifthBracket,
   arkansasSixthBracket,
 };
+
+export const ARKANSAS_SINGLE_STANDARD_DEDUCTION = 2200;
+export const ARKANSAS_MARRIED_STANDARD_DEDUCTION = 4400;

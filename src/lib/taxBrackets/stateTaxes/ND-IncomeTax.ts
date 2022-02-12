@@ -109,3 +109,6 @@ export const northDakotaMarriedIncomeTaxBracketsObject = {
   northDakotaMarriedFourthBracket,
   northDakotaMarriedFifthBracket,
 };
+
+export const NORTH_DAKOTA_SINGLE_STANDARD_DEDUCTION = 12950;
+export const NORTH_DAKOTA_MARRIED_STANDARD_DEDUCTION = 25900;

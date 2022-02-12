@@ -47,3 +47,8 @@ export interface ResultPanelContentProps {
     totalTaxes: number,
     netAnnualIncome: number,
 }
+
+export type StateTaxInformation = {
+    taxBracketList: TaxBracket[],
+    standardDeduction: number
+  };

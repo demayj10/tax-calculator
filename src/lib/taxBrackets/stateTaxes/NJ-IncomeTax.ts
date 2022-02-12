@@ -155,3 +155,6 @@ export const newJerseyMarriedIncomeTaxBracketsObject = {
   newJerseyMarriedSeventhBracket,
   newJerseyMarriedEighthBracket,
 };
+
+export const NEW_JERSEY_SINGLE_STANDARD_DEDUCTION = 0;
+export const NEW_JERSEY_MARRIED_STANDARD_DEDUCTION = 0;

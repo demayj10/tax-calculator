@@ -13,3 +13,6 @@ export const northCarolinaIncomeTaxBracketsArray: TaxBracket[] = [
 export const northCarolinaIncomeTaxBracketsObject = {
   northCarolinaFirstBracket,
 };
+
+export const NORTH_CAROLINA_SINGLE_STANDARD_DEDUCTION = 10750;
+export const NORTH_CAROLINA_MARRIED_STANDARD_DEDUCTION = 21500;

@@ -153,3 +153,6 @@ export const connecticutMarriedIncomeTaxBracketsObject = {
   connecticutMarriedSixthBracket,
   connecticutMarriedSeventhBracket,
 };
+
+export const CONNECTICUT_SINGLE_STANDARD_DEDUCTION = 0;
+export const CONNECTICUT_MARRIED_STANDARD_DEDUCTION = 0;

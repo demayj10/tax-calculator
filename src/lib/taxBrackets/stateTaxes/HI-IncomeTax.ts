@@ -263,3 +263,6 @@ export const hawaiiMarriedIncomeTaxBracketsObject = {
   hawaiiMarriedEleventhBracket,
   hawaiiMarriedTwelfthBracket,
 };
+
+export const HAWAII_SINGLE_STANDARD_DEDUCTION = 2200;
+export const HAWAII_MARRIED_STANDARD_DEDUCTION = 4400;

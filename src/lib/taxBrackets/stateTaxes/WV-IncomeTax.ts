@@ -57,3 +57,6 @@ export const westVirginiaIncomeTaxBracketsObject = {
   westVirginiaFourthBracket,
   westVirginiaFifthBracket,
 };
+
+export const WEST_VIRGINIA_SINGLE_STANDARD_DEDUCTION = 0;
+export const WEST_VIRGINIA_MARRIED_STANDARD_DEDUCTION = 0;

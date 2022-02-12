@@ -46,3 +46,6 @@ export const virginiaIncomeTaxBracketsObject = {
   virginiaThirdBracket,
   viriginaFourthBracket,
 };
+
+export const VIRGINIA_SINGLE_STANDARD_DEDUCTION = 4500;
+export const VIRGINIA_MARRIED_STANDARD_DEDUCTION = 9000;

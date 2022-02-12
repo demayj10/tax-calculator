@@ -65,3 +65,6 @@ export const alabamaMarriedIncomeTaxBracketsObject = {
   alabamaMarriedSecondBracket,
   alabamaMarriedThirdBracket,
 };
+
+export const ALABAMA_SINGLE_STANDARD_DEDUCTION = 2500;
+export const ALABAMA_MARRIED_STANDARD_DEDUCTION = 7500;

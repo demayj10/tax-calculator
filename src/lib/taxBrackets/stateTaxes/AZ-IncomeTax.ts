@@ -87,3 +87,6 @@ export const arizonaMarriedIncomeTaxBracketsObject = {
   arizonaMarriedThirdBracket,
   arizonaMarriedFourthBracket,
 };
+
+export const ARIZONA_SINGLE_STANDARD_DEDUCTION = 12550;
+export const ARIZONA_MARRIED_STANDARD_DEDUCTION = 25100;

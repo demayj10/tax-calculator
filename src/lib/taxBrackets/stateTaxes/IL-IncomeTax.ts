@@ -13,3 +13,6 @@ export const illinoisIncomeTaxBracketsArray: TaxBracket[] = [
 export const illinoisIncomeTaxBracketsObject = {
   illinoisTaxBracket,
 };
+
+export const ILLINOIS_SINGLE_STANDARD_DEDUCTION = 0;
+export const ILLINOIS_MARRIED_STANDARD_DEDUCTION = 0;

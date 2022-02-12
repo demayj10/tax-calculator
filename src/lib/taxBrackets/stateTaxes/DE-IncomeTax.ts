@@ -79,3 +79,6 @@ export const delawareIncomeTaxBracketsObject = {
   delawareSixthBracket,
   delawareSeventhBracket,
 };
+
+export const DELAWARE_SINGLE_STANDARD_DEDUCTION = 3250;
+export const DELAWARE_MARRIED_STANDARD_DEDUCTION = 6500;
