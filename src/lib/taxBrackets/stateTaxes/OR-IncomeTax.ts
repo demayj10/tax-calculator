@@ -87,3 +87,6 @@ export const oregonMarriedIncomeTaxBracketsObject = {
   oregonMarriedThirdBracket,
   oregonMarriedFourthBracket,
 };
+
+export const OREGON_SINGLE_STANDARD_DEDUCTION = 2420;
+export const OREGON_MARRIED_STANDARD_DEDUCTION = 4840;

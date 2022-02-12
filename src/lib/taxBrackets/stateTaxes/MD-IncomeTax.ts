@@ -148,3 +148,6 @@ export const marylandMarriedIncomeTaxBracketsObject = {
   marylandMarriedSeventhBracket,
   marylandMarriedEighthBracket,
 };
+
+export const MARYLAND_SINGLE_STANDARD_DEDUCTION = 2350;
+export const MARYLAND_MARRIED_STANDARD_DEDUCTION = 4700;

@@ -79,3 +79,6 @@ export const montanaIncomeTaxBracketsObject = {
   montanaSixthBracket,
   montanaSeventhBracket,
 };
+
+export const MONTANA_SINGLE_STANDARD_DEDUCTION = 4830;
+export const MONTANA_MARRIED_STANDARD_DEDUCTION = 9660;

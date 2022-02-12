@@ -13,3 +13,6 @@ export const pennsylvaniaTaxBracketsArray: TaxBracket[] = [
 export const pennsylvaniaTaxBracketsObject = {
   pennsylvaniaTaxBracket,
 };
+
+export const PENNSYLVANIA_SINGLE_STANDARD_DEDUCTION = 0;
+export const PENNSYLVANIA_MARRIED_STANDARD_DEDUCTION = 0;

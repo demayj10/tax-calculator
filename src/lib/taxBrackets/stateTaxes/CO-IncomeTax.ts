@@ -13,3 +13,6 @@ export const coloradoIncomeTaxBracketsArray: TaxBracket[] = [
 export const coloradoIncomeTaxBracketsObject = {
   coloradoFirstBracket,
 };
+
+export const COLORADO_SINGLE_STANDARD_DEDUCTION = 12950;
+export const COLORADO_MARRIED_STANDARD_DEDUCTION = 25900;

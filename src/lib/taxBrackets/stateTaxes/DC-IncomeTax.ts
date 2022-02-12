@@ -57,3 +57,6 @@ export const washingtonDCIncomeTaxBracketsObject = {
   washingtonDCFourthBracket,
   washingtonDCFifthBracket,
 };
+
+export const WASHINGTON_DC_SINGLE_STANDARD_DEDUCTION = 12950;
+export const WASHINGTON_DC_MARRIED_STANDARD_DEDUCTION = 25900;

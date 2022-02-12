@@ -13,3 +13,6 @@ export const michiganIncomeTaxBracketsArray: TaxBracket[] = [
 export const michiganIncomeTaxBracketsObject = {
   michiganTaxBracket,
 };
+
+export const MICHIGAN_SINGLE_STANDARD_DEDUCTION = 0;
+export const MICHIGAN_MARRIED_STANDARD_DEDUCTION = 0;

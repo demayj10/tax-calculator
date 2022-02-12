@@ -65,3 +65,6 @@ export const maineMarriedIncomeTaxBracketsObject = {
   maineMarriedSecondBracket,
   maineMarriedThirdBracket,
 };
+
+export const MAINE_SINGLE_STANDARD_DEDUCTION = 12950;
+export const MAINE_MARRIED_STANDARD_DEDUCTION = 25900;

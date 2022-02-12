@@ -93,3 +93,6 @@ export const ohioIncomeTaxBracketsObject = {
   ohioEighthBracket,
   ohioNinthBracket,
 };
+
+export const OHIO_SINGLE_STANDARD_DEDUCTION = 0;
+export const OHIO_MARRIED_STANDARD_DEDUCTION = 0;

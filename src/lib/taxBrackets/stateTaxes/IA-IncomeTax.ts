@@ -93,3 +93,6 @@ export const iowaIncomeTaxBracketsObject = {
   iowaEighthBracket,
   iowaNinthBracket,
 };
+
+export const IOWA_SINGLE_STANDARD_DEDUCTION = 2210;
+export const IOWA_MARRIED_STANDARD_DEDUCTION = 5450;

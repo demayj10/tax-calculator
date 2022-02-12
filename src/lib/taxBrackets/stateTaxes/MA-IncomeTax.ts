@@ -24,3 +24,6 @@ export const massachusettsIncomeTaxBracketsObject = {
   massachusettsZeroBracket,
   massachusettsFirstBracket,
 };
+
+export const MASSACHUSETTS_SINGLE_STANDARD_DEDUCTION = 0;
+export const MASSACHUSETTS_MARRIED_STANDARD_DEDUCTION = 0;

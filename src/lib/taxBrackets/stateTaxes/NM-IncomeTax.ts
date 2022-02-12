@@ -130,3 +130,6 @@ export const newMexicoMarriedFilingSeparatelyIncomeTaxBracketsObject = {
   newMexicoMarriedFilingSeparatelyThirdBracket,
   newMexicoMarriedFilingSeparatelyFourthBracket,
 };
+
+export const NEW_MEXICO_SINGLE_STANDARD_DEDUCTION = 12950;
+export const NEW_MEXICO_MARRIED_STANDARD_DEDUCTION = 25900;

@@ -87,3 +87,6 @@ export const wisconsinMarriedIncomeTaxBracketsObject = {
   wisconsinMarriedThirdBracket,
   wisconsinMarriedFourthBracket,
 };
+
+export const WISCONSIN_SINGLE_STANDARD_DEDUCTION = 11790;
+export const WISCONSIN_MARRIED_STANDARD_DEDUCTION = 21820;

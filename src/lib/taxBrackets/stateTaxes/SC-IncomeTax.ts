@@ -68,3 +68,6 @@ export const southCarolinaIncomeTaxBracketsObject = {
   southCarolinaFifthBracket,
   southCarolinaSixthBracket,
 };
+
+export const SOUTH_CAROLINA_SINGLE_STANDARD_DEDUCTION = 12950;
+export const SOUTH_CAROLINA_MARRIED_STANDARD_DEDUCTION = 25900;

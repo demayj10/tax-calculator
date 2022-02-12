@@ -109,3 +109,6 @@ export const idahoMarriedIncomeTaxBracketsObject = {
   idahoMarriedFourthBracket,
   idahoMarriedFifthBracket,
 };
+
+export const IDAHO_SINGLE_STANDARD_DEDUCTION = 12950;
+export const IDAHO_MARRIED_STANDARD_DEDUCTION = 25900;

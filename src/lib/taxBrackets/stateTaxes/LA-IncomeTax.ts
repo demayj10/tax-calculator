@@ -65,3 +65,6 @@ export const louisianaMarriedIncomeTaxBracketsObject = {
   louisianaMarriedSecondBracket,
   louisianaMarriedThirdBracket,
 };
+
+export const LOUISIANA_SINGLE_STANDARD_DEDUCTION = 0;
+export const LOUISIANA_MARRIED_STANDARD_DEDUCTION = 0;

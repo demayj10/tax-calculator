@@ -46,3 +46,6 @@ export const mississippiIncomeTaxBracketsObject = {
   mississippiSecondBracket,
   mississippiThirdBracket,
 };
+
+export const MISSISSIPPI_SINGLE_STANDARD_DEDUCTION = 2300;
+export const MISSISSIPPI_MARRIED_STANDARD_DEDUCTION = 4600;

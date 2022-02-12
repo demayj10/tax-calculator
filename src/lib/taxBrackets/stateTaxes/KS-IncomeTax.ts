@@ -65,3 +65,6 @@ export const kansasMarriedIncomeTaxBracketsObject = {
   kansasMarriedSecondBracket,
   kansasMarriedThirdBracket,
 };
+
+export const KANSAS_SINGLE_STANDARD_DEDUCTION = 3500;
+export const KANSAS_MARRIED_STANDARD_DEDUCTION = 8000;
