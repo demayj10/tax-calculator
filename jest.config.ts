@@ -13,4 +13,7 @@ export default {
   coveragePathIgnorePatterns: [
     '<rootDir>/src/app/',
   ],
+  testPathIgnorePatterns: [
+    '<rootDir>/e2eTests/',
+  ],
 };
