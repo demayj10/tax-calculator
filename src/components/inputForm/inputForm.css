@@ -62,3 +62,27 @@
         width: 60%;
     }
 }
+
+#input-label-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #228b22;
+
+    margin: 0 auto;
+}
+
+#pay-radio-buttons {
+    margin-top: 0;
+}
+
+#pay-radio-buttons > label {
+    margin-top: 0;
+}
+
+.radio-button > span > span {
+    color: #21421e;
+}
+
+#submit { 
+    background-color: #3cb371;
+}
