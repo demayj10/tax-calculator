@@ -15,6 +15,7 @@ import {
 
 import InputForm from './components/inputForm/inputForm';
 import ResultData from './components/resultData/resultData';
+import Header from './components/header';
 import { InputFormState } from './components/inputForm/inputFormSlice';
 import { calculateGrossAnnualIncome } from './lib/annualIncomeCalculator';
 
@@ -41,6 +42,7 @@ const App: FC = () => {
 
   return (
     <div className="App">
+      <Header />
       <InputForm submitInput={submitInput} />
       <br />
       { showResultContent ? <ResultData /> : null }

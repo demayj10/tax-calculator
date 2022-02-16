@@ -9,6 +9,7 @@ import { useAppSelector } from '../../app/hooks';
 import { handleTextChange, handleRadioChange, selectInputForm } from './inputFormSlice';
 import { AppDispatch } from '../../app/store';
 import { FieldUpdatePayload } from '../../types';
+import './inputForm.css';
 
 const enum RadioOptions {
     Salary = 'Salary',
@@ -44,11 +45,12 @@ const IncomeInput: FC = () => {
   return (
     <div>
       <FormControl component="fieldset">
-        <FormLabel component="legend">How are you paid?</FormLabel>
+        <FormLabel component="legend" id="input-label-text">How are you paid?</FormLabel>
         <RadioGroup
           row
           aria-label="grossIncome"
           data-testid="income-radio-buttons-group"
+          id="pay-radio-buttons"
           value={value}
           name="income-radio-buttons-group"
           onChange={(e: BaseSyntheticEvent) => handleChange(e)}
@@ -60,6 +62,7 @@ const IncomeInput: FC = () => {
                 value={option}
                 control={<Radio />}
                 label={option}
+                className="radio-button"
               />
             ),
           )}

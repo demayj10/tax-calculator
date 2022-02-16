@@ -1,0 +1,11 @@
+#app-header {
+  margin: 0;
+  background-color: #228b22;
+}
+
+#app-header > div > button > svg { 
+  fill: white;
+  margin: 0 0.5em 0 0;
+  height: 1.5em;
+  width: 1.5em;
+}
