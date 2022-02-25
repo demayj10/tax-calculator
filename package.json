@@ -34,7 +34,7 @@
     "test": "jest --verbose --runInBand --coverage",
     "release": "npm run build && npm run test && npx playwright test",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": [
