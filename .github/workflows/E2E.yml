@@ -1,6 +1,6 @@
-name: Playwright Tests
+name: Playwright E2E Tests
 on:
-  deployment_status: 'success'
+  deployment_status:
 jobs:
   test:
     timeout-minutes: 60
