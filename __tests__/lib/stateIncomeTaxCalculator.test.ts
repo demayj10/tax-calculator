@@ -284,6 +284,7 @@ import {
   NEW_JERSEY_MARRIED_STANDARD_DEDUCTION,
   NEW_JERSEY_SINGLE_STANDARD_DEDUCTION,
 } from '../../src/lib/taxBrackets/stateTaxes/NJ-IncomeTax';
+import { kentuckyIncomeTaxBracketsArray, kentuckyIncomeTaxBracketsObject, KENTUCKY_MARRIED_STANDARD_DEDUCTION, KENTUCKY_SINGLE_STANDARD_DEDUCTION } from '../../src/lib/taxBrackets/stateTaxes/KY-IncomeTax';
 
 describe('test findStateTaxBracketList', () => {
   test('should return the tax brackets for Ohio', () => {
@@ -1792,6 +1793,104 @@ describe('test Kansas state income tax', () => {
     expect(actualStandardDeduction).toEqual(expectedStandardDeduction);
 
     const expectedTaxBracket: TaxBracket = kansasMarriedIncomeTaxBracketsObject.kansasMarriedThirdBracket;
+    const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+    const expectedTaxAmount: number = (
+      (annualIncome - minimumToQualify) * taxRate + taxTotalToThisBracket
+    );
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: expectedTaxAmount,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+});
+
+describe('test Kentucky state income tax', () => {
+  test('should return state tax amount for Kentucky and income of $0, single status', () => {
+    const state: string = SupportedStates.Kentucky;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = 0;
+
+    const expectedTaxBracketList: TaxBracket[] = kentuckyIncomeTaxBracketsArray;
+    const expectedStandardDeduction: number = KENTUCKY_SINGLE_STANDARD_DEDUCTION;
+    const {
+      taxBracketList: actualTaxBracketList,
+      standardDeduction: actualStandardDeduction,
+    }: StateTaxInformation = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+    expect(actualStandardDeduction).toEqual(expectedStandardDeduction);
+
+    const expectedTaxBracket: TaxBracket = kentuckyIncomeTaxBracketsObject.kentuckyFirstBracket;
+    const { taxRate } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: 0,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+
+  test('should return state tax amount for Kentucky and income of $100,000, single status', () => {
+    const state: string = SupportedStates.Kentucky;
+    const maritalStatus: string = MaritalStatus.Single;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = kentuckyIncomeTaxBracketsArray;
+    const expectedStandardDeduction: number = KENTUCKY_SINGLE_STANDARD_DEDUCTION;
+    const {
+      taxBracketList: actualTaxBracketList,
+      standardDeduction: actualStandardDeduction,
+    }: StateTaxInformation = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+    expect(actualStandardDeduction).toEqual(expectedStandardDeduction);
+
+    const expectedTaxBracket: TaxBracket = kentuckyIncomeTaxBracketsObject.kentuckyFirstBracket;
+    const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
+    const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
+
+    expect(actualTaxBracket).toEqual(expectedTaxBracket);
+    const expectedTaxAmount: number = (
+      (annualIncome - minimumToQualify) * taxRate + taxTotalToThisBracket
+    );
+
+    const expectedBreakdown: TaxPayload = {
+      taxRate,
+      taxAmount: expectedTaxAmount,
+    };
+    const actualBreakdown: TaxPayload = calculateStateIncomeTax(annualIncome, actualTaxBracket);
+
+    expect(actualBreakdown).toEqual(expectedBreakdown);
+  });
+
+  test('should return state tax amount for Kentucky and income of $100,000, married status', () => {
+    const state: string = SupportedStates.Kentucky;
+    const maritalStatus: string = MaritalStatus.MarriedJointly;
+    const annualIncome = ONE_HUNDRED_THOUSAND;
+
+    const expectedTaxBracketList: TaxBracket[] = kentuckyIncomeTaxBracketsArray;
+    const expectedStandardDeduction: number = KENTUCKY_MARRIED_STANDARD_DEDUCTION;
+    const {
+      taxBracketList: actualTaxBracketList,
+      standardDeduction: actualStandardDeduction,
+    }: StateTaxInformation = findStateTaxBracketList(state, maritalStatus);
+
+    expect(actualTaxBracketList).toEqual(expectedTaxBracketList);
+    expect(actualStandardDeduction).toEqual(expectedStandardDeduction);
+
+    const expectedTaxBracket: TaxBracket = kentuckyIncomeTaxBracketsObject.kentuckyFirstBracket;
     const { minimumToQualify, taxRate, taxTotalToThisBracket } = expectedTaxBracket;
     const actualTaxBracket = findStateIncomeTaxBracket(annualIncome, actualTaxBracketList);
 
