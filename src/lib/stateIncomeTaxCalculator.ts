@@ -87,6 +87,7 @@ import {
   KANSAS_MARRIED_STANDARD_DEDUCTION,
   KANSAS_SINGLE_STANDARD_DEDUCTION,
 } from './taxBrackets/stateTaxes/KS-IncomeTax';
+import { kentuckyIncomeTaxBracketsArray, KENTUCKY_MARRIED_STANDARD_DEDUCTION, KENTUCKY_SINGLE_STANDARD_DEDUCTION } from './taxBrackets/stateTaxes/KY-IncomeTax';
 import {
   louisianaMarriedIncomeTaxBracketsArray,
   louisianaSingleIncomeTaxBracketsArray,
@@ -394,6 +395,14 @@ export const findStateTaxBracketList = (
             standardDeduction: KANSAS_MARRIED_STANDARD_DEDUCTION,
           };
       }
+    case SupportedStates.Kentucky:
+      return {
+        taxBracketList: kentuckyIncomeTaxBracketsArray,
+        standardDeduction: (
+          maritalStatus === MaritalStatus.Single
+            ? KENTUCKY_SINGLE_STANDARD_DEDUCTION : KENTUCKY_MARRIED_STANDARD_DEDUCTION
+        ),
+      };
     case SupportedStates.Louisiana:
       switch (maritalStatus) {
         case MaritalStatus.Single:
